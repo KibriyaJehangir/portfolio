@@ -3,14 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
+    <title>Kibriya's Blog - Loading...</title>
     <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
 
+    <!-- SEO Meta Tags -->
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Loading blog...">
+    <meta name="description" content="Read Kibriya's blog posts on programming, technology, and development. Stay updated with insights and tutorials.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Loading blog...">
-    <meta property="og:description" content="Loading blog...">
+    <meta property="og:title" content="Kibriya's Blog - Loading...">
+    <meta property="og:description" content="Explore insightful blogs by Kibriya on various topics including coding, technology, and development.">
+    <meta property="og:image" content="https://github.com/KibriyaJehangir/portfolio/blob/main/assets/favicon.png">
+    <meta name="author" content="Kibriya Jehangir">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" id="blog-schema"></script>
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +35,7 @@
             color: white;
             border-radius: 5px;
             text-decoration: none;
+            transition: background-color 0.3s;
         }
         a.back-btn:hover {
             background-color: #005fa3;
@@ -50,17 +61,22 @@
             border-radius: 5px;
             overflow-x: auto;
         }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+            #blog-content {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
-    <a href="blogs.html" class="back-btn">← Back to Blogs</a>
+    <a href="blogs.html" class="back-btn" aria-label="Back to Blogs">← Back to Blogs</a>
     <div id="blog-content">Loading blog...</div>
 
-    <!-- JSON-LD for structured data -->
-    <script type="application/ld+json" id="blog-schema"></script>
-
-    <!-- Markdown parser -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         const username = "KibriyaJehangir";
         const repo = "portfolio";
@@ -87,10 +103,10 @@
                 const blogTitle = file.replace(".md", "");
 
                 // Update meta tags for SEO
-                document.title = blogTitle + " | Kibriya's Blog";
-                document.querySelector('meta[name="description"]').setAttribute("content", mdContent.substring(0,150));
+                document.title = `${blogTitle} | Kibriya's Blog`;
+                document.querySelector('meta[name="description"]').setAttribute("content", mdContent.substring(0, 150));
                 document.querySelector('meta[property="og:title"]').setAttribute("content", blogTitle);
-                document.querySelector('meta[property="og:description"]').setAttribute("content", mdContent.substring(0,150));
+                document.querySelector('meta[property="og:description"]').setAttribute("content", mdContent.substring(0, 150));
 
                 // Add JSON-LD structured data for Google
                 const schema = {
