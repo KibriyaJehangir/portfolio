@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uploads</title>
+<style>
+  body { font-family: Arial; padding: 20px; }
+  .grid { display: flex; flex-wrap: wrap; gap: 20px; }
+  .box { border: 1px solid #ccc; padding: 20px; width: 150px; text-align: center; }
+  .box button { margin-top: 10px; }
+  body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2rem;
+  color: #222;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.box div {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.box button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.search-container input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.box button:hover {
+  background: #0056b3;
+}
+
+</style>
+</head>
+<body>
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search folders...">
+</div>
+
+<h1>Folders</h1>
+<div class="grid" id="folderGrid"></div>
+
+<script>
+const username = "KibriyaJehangir"; // Replace with your GitHub username
+const repo = "portfolio";        // Replace with your repo name
+const path = "uploads";            // Path of the folder in the repo
+
+// Fetch folder contents using GitHub API
+fetch(`https://api.github.com/repos/${username}/${repo}/contents/${path}`)
+  .then(res => res.json())
+  .then(data => {
+    const grid = document.getElementById('folderGrid');
+
+    // Filter only directories
+    const folders = data.filter(item => item.type === "dir");
+
+    folders.forEach(folder => {
+      const box = document.createElement('div');
+      box.className = 'box';
+      box.innerHTML = `
+        <div>${folder.name}</div>
+        <button onclick="window.open('${folder.html_url}', '_blank')">Download</button>
+      `;
+      grid.appendChild(box);
+    });
+  })
+  .catch(err => console.error(err));
+  // Filter folders based on search input
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach(box => {
+    const folderName = box.querySelector('div').textContent.toLowerCase();
+    if (folderName.includes(query)) {
+      box.style.display = 'block';
+    } else {
+      box.style.display = 'none';
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>

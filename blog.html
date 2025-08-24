@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Loading blog...">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Loading blog...">
+    <meta property="og:description" content="Loading blog...">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f9f9f9;
+        }
+        a.back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            background-color: #0077cc;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        a.back-btn:hover {
+            background-color: #005fa3;
+        }
+        #blog-content {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 25px;
+            line-height: 1.3;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <a href="blogs.html" class="back-btn">← Back to Blogs</a>
+    <div id="blog-content">Loading blog...</div>
+
+    <!-- JSON-LD for structured data -->
+    <script type="application/ld+json" id="blog-schema"></script>
+
+    <!-- Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const username = "KibriyaJehangir";
+        const repo = "portfolio";
+        const folder = "blogs";
+
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        async function loadBlog() {
+            const file = getQueryParam("file");
+            if (!file) {
+                document.getElementById("blog-content").textContent = "No blog selected.";
+                return;
+            }
+
+            try {
+                const res = await fetch(`https://raw.githubusercontent.com/${username}/${repo}/main/${folder}/${file}`);
+                const mdContent = await res.text();
+                const htmlContent = marked.parse(mdContent);
+                document.getElementById("blog-content").innerHTML = htmlContent;
+
+                const blogTitle = file.replace(".md", "");
+
+                // Update meta tags for SEO
+                document.title = blogTitle + " | Kibriya's Blog";
+                document.querySelector('meta[name="description"]').setAttribute("content", mdContent.substring(0,150));
+                document.querySelector('meta[property="og:title"]').setAttribute("content", blogTitle);
+                document.querySelector('meta[property="og:description"]').setAttribute("content", mdContent.substring(0,150));
+
+                // Add JSON-LD structured data for Google
+                const schema = {
+                    "@context": "https://schema.org",
+                    "@type": "BlogPosting",
+                    "headline": blogTitle,
+                    "articleBody": mdContent,
+                    "author": {
+                        "@type": "Person",
+                        "name": "Kibriya Jehangir"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Kibriya Portfolio"
+                    },
+                    "datePublished": new Date().toISOString()
+                };
+                document.getElementById("blog-schema").textContent = JSON.stringify(schema);
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById("blog-content").textContent = "Failed to load blog.";
+            }
+        }
+
+        loadBlog();
+    </script>
+</body>
+</html>
