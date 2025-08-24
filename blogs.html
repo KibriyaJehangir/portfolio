@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Kibriya's blogs on programming, technology, and development. Stay updated with the latest insights and tutorials.">
+    <meta name="keywords" content="Kibriya, Blogs, Programming, Technology, Development, Tutorials, Web Development, AI, Coding">
+    <meta name="author" content="Kibriya Jehangir">
+    <meta property="og:title" content="Kibriya's Blogs">
+    <meta property="og:description" content="Explore Kibriya's blogs on programming, technology, and development. Stay updated with the latest insights and tutorials.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kibriyajehangir.github.io/portfolio/blogs.html">
+    <meta property="og:image" content="https://github.com/KibriyaJehangir/portfolio/blob/main/assets/favicon.png">
     <title>Kibriya's Blogs</title>
-      <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "Kibriya's Blogs",
+        "description": "Explore Kibriya's blogs on programming, technology, and development. Stay updated with the latest insights and tutorials.",
+        "url": "https://kibriyajehangir.github.io/portfolio/blogs.html",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "url": "https://kibriyajehangir.github.io/portfolio/blogs.html"
+        }
+    }
+    </script>
 
     <style>
         body {
@@ -24,6 +47,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: transform 0.3s;
         }
         .blog-title {
             font-size: 18px;
@@ -38,9 +62,21 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            transition: background-color 0.3s;
         }
         .view-btn:hover {
             background-color: #005fa3;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .blog-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .view-btn {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
@@ -87,6 +123,7 @@
                 btn.className = "view-btn";
                 btn.textContent = "View";
                 btn.href = `blog.html?file=${blog}`;
+                btn.setAttribute("aria-label", `View the blog titled ${blog.replace(".md", "")}`);
 
                 card.appendChild(title);
                 card.appendChild(btn);
