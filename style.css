@@ -50,6 +50,7 @@ nav {
   max-width: 1200px;
   margin: auto;
   display: flex;
+  margin-right: 10px;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -651,3 +652,4 @@ html {
   scroll-behavior: smooth;   /* for smooth scrolling */
   scroll-padding-top: 80px;  /* adjust based on your header height */
 }
+
