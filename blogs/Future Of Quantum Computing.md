@@ -8,8 +8,10 @@ Quantum computing is an emerging field that leverages the principles of quantum 
 
 Traditional computers use **bits** that can either be 0 or 1. Quantum computers, on the other hand, use **qubits**, which can exist in a combination of states thanks to principles like **superposition** and **entanglement**.
 
-- **Bit:** Classical unit of information (0 or 1).
-- **Qubit:** Quantum unit of information (0, 1, or both simultaneously).
+- **Bit:** Classical unit of information (0 or 1).  
+- **Qubit:** Quantum unit of information (0, 1, or both simultaneously).  
+
+🔗 [Introduction to Quantum Computing – IBM](https://www.ibm.com/topics/quantum-computing)
 
 ---
 
@@ -24,15 +26,17 @@ Traditional computers use **bits** that can either be 0 or 1. Quantum computers,
 3. **Interference**  
    Quantum states can reinforce or cancel each other, allowing quantum algorithms to amplify correct answers.
 
+🔗 [Quantum Mechanics Basics – Britannica](https://www.britannica.com/science/quantum-mechanics-physics)
+
 ---
 
 ## 3. How is a Qubit Built?
 
 Qubits can be implemented using different technologies:
-- **Superconducting circuits** (used by IBM and Google).
-- **Trapped ions** (used by IonQ).
-- **Photons** (light-based qubits).
-- **Topological qubits** (Microsoft’s approach).
+- **Superconducting circuits** (used by [IBM](https://www.ibm.com/quantum) and [Google Quantum AI](https://quantumai.google/)).  
+- **Trapped ions** (used by [IonQ](https://ionq.com/)).  
+- **Photons** (light-based qubits).  
+- **Topological qubits** ([Microsoft’s approach](https://azure.microsoft.com/en-us/solutions/quantum-computing/)).  
 
 Each approach has trade-offs in stability, scalability, and error rates.
 
@@ -52,16 +56,18 @@ Each approach has trade-offs in stability, scalability, and error rates.
 ## 5. Applications of Quantum Computing
 
 1. **Cryptography**  
-   Shor’s algorithm could break RSA encryption, prompting research into post-quantum cryptography.
+   Shor’s algorithm could break RSA encryption, prompting research into [post-quantum cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography).  
 
 2. **Optimization**  
-   Logistics, finance, and supply chain management can benefit from solving complex optimization problems.
+   Used in logistics, finance, and supply chain management.  
 
 3. **Drug Discovery & Materials Science**  
-   Quantum computers can simulate molecules and chemical reactions more efficiently than classical computers.
+   Simulating molecules at the quantum level for faster drug development.  
 
 4. **Artificial Intelligence**  
-   Quantum machine learning could accelerate data analysis and pattern recognition.
+   Enhancing machine learning with quantum algorithms.  
+
+🔗 [Applications of Quantum Computing – Nature](https://www.nature.com/articles/d41586-019-02936-3)
 
 ---
 
@@ -70,26 +76,29 @@ Each approach has trade-offs in stability, scalability, and error rates.
 - **Decoherence and noise** (qubits lose information quickly).  
 - **Error correction** (quantum error correction requires many physical qubits for one logical qubit).  
 - **Scalability** (building large-scale quantum computers is extremely difficult).  
-- **High cost** (requires cryogenic systems and advanced infrastructure).
+- **High cost** (requires cryogenic systems and advanced infrastructure).  
+
+🔗 [Quantum Error Correction Overview – Microsoft](https://learn.microsoft.com/en-us/azure/quantum/overview-error-correction)
 
 ---
 
 ## 7. The Future of Quantum Computing
 
-- **Near-term:** Small-scale quantum computers (NISQ era: Noisy Intermediate-Scale Quantum) will be used for research and optimization tasks.  
+- **Near-term:** Small-scale quantum computers (NISQ era: *Noisy Intermediate-Scale Quantum*) will be used for research and optimization tasks.  
 - **Long-term:** Fully fault-tolerant quantum computers may revolutionize cryptography, AI, and scientific discovery.  
 
-Governments and companies are heavily investing in this field, indicating its growing importance in the future of technology.
+Governments and companies are investing heavily in this field.  
+🔗 [Google Quantum AI](https://quantumai.google/) | [IBM Quantum Roadmap](https://www.ibm.com/quantum/roadmap)
 
 ---
 
 ## 8. Learning Quantum Computing
 
-If you’re interested in exploring more:
-- **IBM Quantum Experience** (free online access to real quantum computers).  
-- **Qiskit** (open-source quantum programming framework by IBM).  
-- **Microsoft Quantum Development Kit** with Q# language.  
-- **Books**: "Quantum Computation and Quantum Information" by Nielsen & Chuang.
+If you’re interested in exploring more:  
+- [IBM Quantum Experience](https://quantum-computing.ibm.com/) – Free access to real quantum computers.  
+- [Qiskit](https://qiskit.org/) – Open-source quantum programming framework by IBM.  
+- [Microsoft Quantum Development Kit](https://learn.microsoft.com/en-us/azure/quantum/) – Tools for quantum programming in Q#.  
+- 📖 Book: *Quantum Computation and Quantum Information* by Nielsen & Chuang.  
 
 ---
 
@@ -100,4 +109,5 @@ Quantum computing stands at the intersection of physics, computer science, and m
 ---
 
 *Written by Kibriya Jehangir*  
-*Date: August 2025*
+📅 *Date: August 2025*  
+🔗 [Follow me on GitHub](https://github.com/KibriyaJehangir)  
