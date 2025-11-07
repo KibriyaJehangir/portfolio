@@ -113,5 +113,126 @@ async function loadCertificates() {
   }
 }
 
-// Load certificates after page loads
-window.addEventListener("DOMContentLoaded", loadCertificates);
+// ----------------- Load Certificates -----------------
+async function loadCertificates() {
+  const repo = "KibriyaJehangir/portfolio";
+  const folder = "certificates";
+  const branch = "main";
+  const apiUrl = `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`;
+
+  const container = document.getElementById("gigs-container");
+  const countEl = document.getElementById("gig-count");
+
+  if (!container) return;
+
+  container.innerHTML = "Loading...";
+  if (countEl) countEl.textContent = "Loading...";
+
+  try {
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error(`GitHub API HTTP ${res.status}`);
+    const files = await res.json();
+
+    // Filter image files only
+    const images = files.filter(f => /\.(jpe?g|png|gif|webp|svg)$/i.test(f.name));
+
+    container.innerHTML = "";
+    let count = 0;
+
+    images.forEach(file => {
+      const filename = file.name;
+      const title = filename.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+
+      // create anchor for full screen
+      const a = document.createElement("a");
+      a.href = file.download_url;
+      a.target = "_blank"; // open in new tab
+      a.rel = "noopener noreferrer";
+      a.className = "certificate-card";
+
+      // create image
+      const img = document.createElement("img");
+      img.src = file.download_url;
+      img.alt = title;
+
+      // create overlay title
+      const h3 = document.createElement("h3");
+      h3.textContent = title;
+      h3.className = "overlay-title";
+
+      a.appendChild(img);
+      a.appendChild(h3);
+      container.appendChild(a);
+
+      count++;
+    });
+
+    if (countEl) countEl.textContent = count;
+    if (count === 0) container.innerHTML = "<p>No certificate images found.</p>";
+
+  } catch (err) {
+    console.error("Error loading certificates:", err);
+    container.innerHTML = `<p style="color:red">Failed to load certificates: ${err.message}</p>`;
+    if (countEl) countEl.textContent = "0";
+  }
+}
+
+// ----------------- Certificate Search -----------------
+function enableCertificateSearch() {
+  const searchInput = document.getElementById("gig-search");
+  const container = document.getElementById("gigs-container");
+
+  if (!searchInput || !container) return;
+
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const cards = container.querySelectorAll(".certificate-card");
+
+    let visibleCount = 0;
+    cards.forEach(card => {
+      const title = card.querySelector("h3").textContent.toLowerCase();
+      if (title.includes(query)) {
+        card.style.display = "block";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    document.getElementById("gig-count").textContent = visibleCount;
+  });
+}
+
+// ----------------- Init -----------------
+document.addEventListener("DOMContentLoaded", () => {
+  loadCertificates();
+  enableCertificateSearch();
+});
+// JavaScript to detect when an item is in the viewport and add the 'visible' class
+
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+const isInViewport = (el) => {
+    const rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
+};
+
+const handleScroll = () => {
+    timelineItems.forEach(item => {
+        if (isInViewport(item)) {
+            item.classList.add('visible');
+        }
+    });
+};
+
+// Run the scroll detection on page load and scroll
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleScroll); // Initial check when the page loads
+// JavaScript to handle the toggle of the burger menu
+
+burger.addEventListener('click', () => {
+    // Toggle the 'open' class on the burger
+    burger.classList.toggle('open');
+    // Toggle the display of nav links
+    navLinks.classList.toggle('open');
+});
