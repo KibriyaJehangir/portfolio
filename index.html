@@ -1,228 +1,1284 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kibriya Portfolio</title>
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
 
-    <!-- SEO Meta Tags -->
-    <meta name="robots" content="index, follow">
-    <meta name="description" content="Kibriya's Portfolio showcasing skills, projects, certifications, and blogs. Explore the work of a passionate programmer and aspiring entrepreneur.">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Kibriya Portfolio">
-    <meta property="og:description" content="Explore Kibriya's portfolio, featuring programming skills, personal projects, certifications, and insights.">
-    <meta property="og:url" content="https://kibriyajehangir.github.io/portfolio/index.html">
-    <meta property="og:image" content="https://kibriyajehangir.github.io/portfolio/assets/favicon.png">
+/* Add shake effect */
+body.shake-on-load {
+  animation: shake 0.5s ease;
+}
+/* Continuous slight up and down movement */
+@keyframes floatUpDown {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
 
-    <!-- Link to External Stylesheets -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon for various devices -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
-    
-    <!-- Google Fonts (Optional) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+body {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
 
-    <!-- Font Awesome Icons (CDN link) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Devicon Icons (CDN link) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css">
-</head>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-<body>
-    <!-- Header Section -->
-    <header>
-        <nav>
-            <div class="logo">Kibriya</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="uploads.html">Uploads</a></li>
-            </ul>
-            <div class="burger">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </nav>
-    </header>
+body {
+  line-height: 1.6;
+  color: #333;
+  margin: 0px;
+  padding: 0px;
+}
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <!-- GitHub Profile Image -->
-            <img src="https://github.com/KibriyaJehangir.png" alt="Kibriya's GitHub Avatar" class="hero-avatar" width="150" height="150">
-            <h1>Hello, I'm Kibriya</h1>
-            <p>Junior Developer | Programmer | Tech Enthusiast</p>
-            <a href="#projects" class="btn">View My Work</a>
-        </div>
-    </section>
+/* Header */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>
-            Hi, I’m <strong>Kibriya</strong>, a passionate <strong>programmer</strong>, <strong>aspiring entrepreneur</strong>, and lifelong learner. From a young age, I’ve been fascinated by <strong>coding and technology</strong>, mastering multiple programming languages including <strong>Python, Java, C++, Flutter, and Android Studio</strong>. My projects range from <strong>AI-powered games</strong> to <strong>web development</strong>, and I enjoy creating <strong>innovative solutions</strong> that combine logic with creativity.
-        </p>
-        <p>
-            Beyond programming, I am deeply interested in <strong>business, networking</strong>, and emerging technologies like <strong>blockchain</strong> and <strong>quantum computing</strong>. My goal is to merge <strong>technical skills</strong> with <strong>business acumen</strong> to build meaningful projects and eventually run <strong>successful ventures</strong>.
-        </p>
-        <p>
-            I believe in <strong>learning by doing</strong>, which is why I create <strong>practical solutions, tutorials, and tools</strong> for others to explore and grow. My website is a reflection of my journey—sharing my <strong>work, insights, and resources</strong> to inspire and help fellow learners and developers.
-        </p>
-        <p>Let’s <strong>innovate, code, and create together!</strong></p>
-    </section>
+nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  margin-right: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
 
-    <!-- Skills Section -->
-    <section class="about skills" id="skills">
-        <h2>My Skills</h2>
-    <div class="skills-grid">
-        <!-- Git -->
-        <div class="skill-card">
-            <i class="devicon-git-plain-wordmark colored"></i>
-            <p>Git</p>
-        </div>
-        
-        <!-- GitHub -->
-        <div class="skill-card">
-            <i class="devicon-github-original-wordmark colored"></i>
-            <p>GitHub</p>
-        </div>
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  nav {
+    margin-right: 50px; /* 50px left margin for mobile */
+    margin-left: auto; /* optional, keeps spacing cleaner */
+  }
+}
 
-        <!-- Kali Linux -->
-        <div class="skill-card">
-            <i class="devicon-linux-plain-wordmark colored"></i>
-            <p>Kali Linux</p>
-        </div>
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007BFF;
+  display: flex;
+  flex-direction: row;
+}
 
-        <!-- WordPress -->
-        <div class="skill-card">
-            <i class="fab fa-wordpress"></i>
-            <p>WordPress</p>
-        </div>
 
-        <!-- Elementor -->
-        <div class="skill-card">
-            <i class="fab fa-elementor"></i>
-            <p>Elementor</p>
-        </div>
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
 
-        <!-- Shopify -->
-        <div class="skill-card">
-            <i class="fab fa-shopify"></i>
-            <p>Shopify</p>
-        </div>
+.nav-links li {
+  list-style: none;
+}
 
-        <!-- Flutter -->
-        <div class="skill-card">
-            <i class="devicon-flutter-plain-wordmark colored"></i>
-            <p>Flutter</p>
-        </div>
-        
-        <!-- Dart -->
-        <div class="skill-card">
-            <i class="devicon-dart-plain-wordmark colored"></i>
-            <p>Dart</p>
-        </div>
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+  animation: pulse 4s infinite ease-in-out;
+}
 
-        <!-- Android Studio -->
-        <div class="skill-card">
-            <i class="devicon-androidstudio-plain-wordmark colored"></i>
-            <p>Android Studio</p>
-        </div>
+/* Pulsing links */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
 
-        <!-- JavaScript -->
-        <div class="skill-card">
-            <i class="devicon-javascript-plain colored"></i>
-            <p>JavaScript</p>
-        </div>
+.nav-links a:hover {
+  color: #007BFF;
+}
 
-        <!-- CSS -->
-        <div class="skill-card">
-            <i class="devicon-css3-plain-wordmark colored"></i>
-            <p>CSS</p>
-        </div>
+/* Burger Menu (for mobile) */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
-        <!-- HTML -->
-        <div class="skill-card">
-            <i class="devicon-html5-plain-wordmark colored"></i>
-            <p>HTML</p>
-        </div>
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
 
-        <!-- C++ -->
-        <div class="skill-card">
-            <i class="devicon-cplusplus-plain-wordmark colored"></i>
-            <p>C++</p>
-        </div>
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url(https://tse3.mm.bing.net/th/id/OIP.xt0LxepaFOOy9qif7Mr7QgHaE7?r=0&cb=ucfimg2ucfimg=1&w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 50px 20px;
+  overflow: hidden;
+  animation: backgroundShift 20s ease infinite;
+}
 
-        <!-- C -->
-        <div class="skill-card">
-            <i class="devicon-c-plain-wordmark colored"></i>
-            <p>C</p>
-        </div>
+/* Smooth background movement */
+@keyframes backgroundShift {
+  0% { background-position: center top; }
+  50% { background-position: center bottom; }
+  100% { background-position: center top; }
+}
 
-        <!-- Java -->
-        <div class="skill-card">
-            <i class="devicon-java-plain-wordmark colored"></i>
-            <p>Java</p>
-        </div>
+.hero-avatar {
+  border-radius: 50%;
+  margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  border: 4px solid #fff;
+  animation: float 4s ease-in-out infinite, avatarGlow 3s ease-in-out infinite alternate;
+}
 
-        <!-- Python -->
-        <div class="skill-card">
-            <i class="devicon-python-plain-wordmark colored"></i>
-            <p>Python</p>
-        </div>
+/* Floating avatar animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
-        <!-- Liquid -->
-        <div class="skill-card">
-            <i class="fas fa-tint"></i>
-            <p>Liquid</p>
-        </div>
+/* Avatar glow */
+@keyframes avatarGlow {
+  0% { box-shadow: 0 0 5px #fff; }
+  100% { box-shadow: 0 0 25px #007BFF; }
+}
 
-        <!-- SQLite -->
-        <div class="skill-card">
-            <i class="devicon-sqlite-plain-wordmark colored"></i>
-            <p>SQLite</p>
-        </div>
-  
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: slideIn 2s ease-out forwards, textWave 4s ease-in-out infinite;
+  opacity: 0;
+}
 
-        </div>
-    </section>
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 3s ease-out forwards, textPulse 5s infinite ease-in-out;
+  opacity: 0;
+}
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>My GitHub Projects</h2>
-        <p>Total Projects: <span id="project-count">Loading...</span></p>
-        <div id="projects"></div>
-    </section>
+/* Slide in animation for h1 */
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact" style="text-align:center;">
-        <h2>Contact Me</h2>
-        <p>Email: kibriyajehangir69@gmail.com</p>
-        <p>Phone: +92 3165288913</p>
-        <div class="socials">
-            <a href="https://github.com/KibriyaJehangir">GitHub</a>
-            <a href="https://pk.linkedin.com/in/kibriya-jehangir-387413378">LinkedIn</a>
-            <a href="https://monkeytype.com/profile/Kibriya_Jehangir">MonkeyType</a>
-            <a href="https://leetcode.com/u/Kibriya_Jehangir/">LeetCode</a>
-            <a href="https://www.youtube.com/@Kibriya_Jehangir69">YouTube</a>
-        </div>
-    </section>
+/* Fade in animation for paragraph */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Kibriya. All rights reserved.</p>
-    </footer>
+/* Continuous text wave effect */
+@keyframes textWave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* Paragraph pulsing */
+@keyframes textPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #fff;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  animation: buttonGlow 3s infinite alternate;
+}
+
+.btn:hover {
+  background-color: #007BFF;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Button glowing animation */
+@keyframes buttonGlow {
+  0% { box-shadow: 0 0 5px #fff; }
+  100% { box-shadow: 0 0 20px #007BFF; }
+}
+
+/* About */
+.about, .projects, .contact {
+  padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: sectionWave 6s ease-in-out infinite;
+}
+
+/* Subtle wave effect */
+@keyframes sectionWave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+/* Section heading */
+.about h2, .projects h2, .contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  animation: slideInFromLeft 1s ease forwards;
+  opacity: 0;
+}
+
+/* Slide in animation for headings */
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Paragraph animation */
+.about p, .projects p, .contact p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* Fade in from bottom animation */
+@keyframes fadeInUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Subtle floating effect for cards or images inside sections */
+.about .card, .projects .card, .contact .card {
+  display: inline-block;
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about .card:hover, .projects .card:hover, .contact .card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* Fade in animation for cards */
+.about .card, .projects .card, .contact .card {
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* Optional glowing underline for headings */
+.about h2::after, .projects h2::after, .contact h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #007BFF;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #0366d6;
+  word-break: break-word;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #007BFF; }
+  100% { box-shadow: 0 0 20px #007BFF; }
+}
+
+/* Projects Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Contact */
+.contact p {
+  margin: 0.5rem 0;
+}
+
+.socials a {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #007BFF;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #f1f1f1;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    background: #fff;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    gap: 10px; /* <-- this automatically adds spacing between children */
+  }
+
+  /* Ensure all links inside nav-links are block */
+  .nav-links a,
+  .nav-links button {
+    display: block;
+    width: 100%; /* optional: full width */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  /* General styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Grid container */
+    #projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* Individual project card */
+    .project {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .project h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      color: #0366d6;
+      word-break: break-word;
+    }
+
+    .project p {
+      font-size: 0.95rem;
+      color: #555;
+      min-height: 40px;
+    }
+
+    .project a {
+      display: inline-block;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #0366d6;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+
+    .project a:hover {
+      background-color: #024e9b;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 500px) {
+      body { padding: 10px; }
+      .project { padding: 15px; }
+      .project h3 { font-size: 1.1rem; }
+      .project p { font-size: 0.9rem; }
+      .project a { font-size: 0.85rem; padding: 5px 10px; }
+    }
+    /* Skills Section */
+.skills {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+}
+
+.skill-card {
+  background: rgba(0,123,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.skill-card i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+  background: rgba(0,123,255,0.1);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== Main Heading ===== */
+.certificates h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  display: inline-block;
+  color: #000; /* black heading */
+  position: relative;
+  animation: slideInFromLeft 1s ease forwards;
+  opacity: 0;
+}
+
+/* Glow underline for heading */
+.certificates h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #007BFF;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #007BFF; }
+  100% { box-shadow: 0 0 20px #007BFF; }
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== Certificates Grid ===== */
+#certificates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ===== Individual Certificate Card ===== */
+.certificate-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.certificate-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #0366d6;
+  word-break: break-word;
+}
+
+/* Certificate image */
+.certificate-card img {
+  max-width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Buttons aligned horizontally */
+.certificate-card .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.certificate-card a {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: #0366d6;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.certificate-card a:hover {
+  background-color: #024e9b;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .certificate-card img {
+    height: 100px;
+  }
+  .certificate-card h3 {
+    font-size: 1rem;
+  }
+}
+.contact-info {
+  display: flex;
+  flex-direction: column; /* stack email and phone */
+  align-items: center; /* center horizontally */
+  justify-content: flex-end; /* push them to bottom if section is tall */
+  margin-top: 2rem; /* spacing from text above */
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+.contact {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.socials {
+  margin-bottom: 1.5rem;
+}
+
+.socials a {
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-info {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+.contact p {
+  text-align: center;
+  width: 100%;
+  margin: 0.5rem auto;
+}
+html {
+  scroll-behavior: smooth;   /* for smooth scrolling */
+  scroll-padding-top: 80px;  /* adjust based on your header height */
+}
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.skill-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sub-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.sub-skills li {
+  margin: 5px 0;
+}
+/* gigs grid: 2 per row always */
+.gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  gap: 28px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* gig card */
+.gig-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.gig-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+/* gig image - taller for more professional look */
+.gig-card img {
+  width: 100%;
+  height: 260px;          /* increased height */
+  object-fit: cover;
+  display: block;
+}
+
+/* gig title */
+.gig-card h3 {
+  margin: 14px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+  min-height: 3em;        /* reserve space for 2 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* gigs section container */
+#gigs {
+  max-width: 1100px;   /* limit width for large screens */
+  margin: 0 auto;      /* center horizontally */
+  padding: 40px 20px;  /* top/bottom + side padding */
+}
+
+/* gigs grid inside the section */
+.gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 28px;
+  margin-top: 20px;
+}
+#gig-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  margin: 15px auto 25px auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+#gig-search:focus {
+  border-color: #0073e6; /* highlight on focus */
+}
+/* default (light) */
+body {
+  background: #fff;
+  color: #000;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* dark theme when gigs section is active */
+body.dark-mode {
+  background: #000;
+  color: #fff;
+}
+
+/* make sure section-specific text adapts */
+.gigs h2, .gigs p, .gig-card h3 {
+  transition: color 0.4s ease;
+}
+body.dark-mode .gigs h2,
+body.dark-mode .gigs p,
+body.dark-mode .gig-card h3 {
+  color: #fff;
+}
+
+body.dark-mode .gig-card {
+  background: #111;
+  border: 1px solid #333;
+}
+.gigs-grid, #gigs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.gig-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gig-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gig-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(50%);
+}
+
+.gig-card h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 8px 0;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  font-size: 50px;
+}
+/* Certificates Grid */
+#gigs-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 per row */
+  gap: 28px;
+  margin-top: 20px;
+}
+
+/* Certificate Card */
+.gig-card {
+  position: relative;
+  overflow: hidden;
+  width: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: block; /* ensures the anchor behaves like a block */
+}
+
+/* Certificate Image */
+.gig-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Black overlay effect on hover */
+.gig-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(50%);
+}
+
+/* Overlay title */
+.gig-card .overlay-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 50px;
+  transition: background 0.3s ease;
+}
+
+/* Darker overlay on hover */
+.gig-card:hover .overlay-title {
+  background: rgba(0, 0, 0, 0.8);
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+/* Skills Grid with 7 cards per row */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 7 cards per row */
+    gap: 20px; /* Reduced gap between the cards */
+    margin-top: 30px;
+}
+
+/* Styling for each skill card (focused, no effects, no text) */
+.skill-card {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    height: 150px; /* Adjusted height for image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    border-radius: 15px; /* Rounded corners for the cards */
+    background: url(https://64.media.tumblr.com/149fde84a581337a2623cc9bba0b5d66/tumblr_oaxh24U0651txeruoo1_540.gif); /* Semi-transparent dark background for focus */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for emphasis */
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+}
+
+/* Hover effect to increase the shadow when hovered */
+.skill-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+}
+
+/* Style for skill card images */
+.skill-card img {
+    width: 50%; /* Image takes up 50% of the card width */
+    height: 50%; /* Image takes up 50% of the card height */
+    object-fit: contain; /* Ensure the image is fully contained within the card */
+}
+/* Global Reset and Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Reset and Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Main Heading with Black Color */
+/* Main Heading Style */
+.timeline h1 {
+    font-size: 1.8rem; /* Smaller font size for the heading */
+    font-weight: bold; /* Bold font weight */
+    color: #000; /* Black color for the heading */
+    text-align: center; /* Center the heading text */
+    margin-bottom: 50px; /* Space below the heading */
+    position: relative; /* To position the blue line */
+}
+
+/* Blue line in the center under the heading */
+.timeline h1::after {
+    content: ''; /* Creates an empty pseudo-element */
+    display: block;
+    width: 50px; /* Length of the blue line */
+    height: 3px; /* Thickness of the blue line */
+    background: #0366D6; /* Blue color */
+    position: absolute;
+    bottom: -10px; /* Position it just below the heading */
+    left: 50%; /* Position it in the center */
+    transform: translateX(-50%); /* Adjust the line to be perfectly centered */
+    border-radius: 2px; /* Slight rounded edges */
+}
+
+/* Glow animation for the blue line */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #0366D6; }
+    100% { box-shadow: 0 0 20px #0366D6; }
+}
+
+.timeline h1::after {
+    animation: glow 2s ease-in-out infinite alternate; /* Glow effect */
+}
+
+
+/* Timeline Item Container */
+.timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Add smooth reveal when the item is in view */
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Left and Right Alignment */
+.timeline-item.left {
+    align-items: flex-start;
+}
+
+.timeline-item.right {
+    align-items: flex-end;
+}
+
+/* Timeline Dots - Blue Color */
+.timeline-item .dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #0366D6; /* Blue color for dots */
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+/* Timeline Content Box */
+.timeline-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline Content Heading */
+.timeline-content h2 {
+    font-size: 1.6rem;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+/* Timeline Content Paragraph */
+.timeline-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Date Formatting */
+time {
+    font-size: 1.2rem;
+    color: #000000;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Vertical Line Connecting Timeline Items */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background-color: #0366D6;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Add animation for timeline line when the item becomes visible */
+.timeline-item.visible::before {
+    background-color: #0366D6;
+}
+
+/* Add animation for dots filling when user scrolls */
+.timeline-item.visible .dot {
+    background-color: #0366D6; /* Keep blue color for the dot */
+    transform: scale(1.5); /* Slightly enlarge the dot when in view */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-item .dot {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item .timeline-content {
+        width: 90%;
+    }
+
+    .timeline-item::before {
+        left: 0;
+        transform: translateX(0);
+    }
+}
+
+/* Animation for Smooth Scroll */
+@keyframes fadeInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    animation: fadeInFromBottom 1s ease-out forwards;
+}
+/* By default, show the burger icon on mobile devices */
+.burger {
+    display: block;
+}
+
+/* Hide the burger icon on larger screens (desktop) */
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+}
+/* Show the burger icon by default on mobile */
+.burger {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.burger div {
+    width: 30px;
+    height: 4px;
+    margin: 6px 0;
+    background-color: #333;
+    transition: all 0.3s;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: none;  /* Initially hidden on mobile */
+    position: absolute;
+    top: 60px;  /* Adjust according to header height */
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links li {
+    padding: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: block;
+}
+
+/* When the burger menu is clicked (active state) */
+.burger.open div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+}
+
+.burger.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
+}
+
+/* Show the nav links when the burger menu is open */
+.burger.open + .nav-links {
+    display: block;
+}
+
+/* Hide the burger icon on desktop */
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+    .nav-links {
+        display: flex;
+        position: static;
+        background-color: transparent;
+        width: auto;
+        justify-content: flex-end;
+    }
+}
+/* General Button Styles */
+.contact .socials a {
+    display: inline-block;
+    margin: 5px; /* Reduced margin for smaller buttons */
+    padding: 5px 15px; /* Smaller padding */
+    background-color: #8E7DBE; /* Choose a background color */
+    color: white;
+    font-size: 14px; /* Smaller font size */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hover Effect for Buttons */
+.contact .socials a:hover {
+    background-color: #6f5d92; /* Darker shade on hover */
+}
+
+/* Mobile-Friendly Styles */
+@media (max-width: 768px) {
+    .contact .socials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contact .socials a {
+        margin: 5px;
+        padding: 5px 15px;
+        font-size: 12px; /* Smaller font size for mobile */
+        width: auto; /* Buttons won't take full width */
+        text-align: center;
+        border-radius: 5px; /* Rounded corners for mobile */
+    }
+}
+
+/* Larger Screen Styles (Tablet and Desktop) */
+@media (min-width: 769px) {
+    .contact .socials a {
+        padding: 5px 15px; /* Smaller padding */
+        font-size: 14px; /* Smaller font size */
+        width: auto; /* Keep buttons compact */
+    }
+}
