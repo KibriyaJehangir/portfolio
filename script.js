@@ -1,238 +1,1514 @@
+/* Shake animation *//* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
 
-  window.addEventListener("load", () => {
-    document.body.classList.add("shake-on-load");
 
-    // Remove the class after animation ends (so it won’t repeat)
-    setTimeout(() => {
-      document.body.classList.remove("shake-on-load");
-    }, 500); // matches animation duration
-  });
+/* Add shake effect */
+body.shake-on-load {
+  animation: shake 0.5s ease;
+}
+/* Continuous slight up and down movement */
+@keyframes floatUpDown {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+body {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #333;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Header */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  margin-right: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  nav {
+    margin-right: 50px; /* 50px left margin for mobile */
+    margin-left: auto; /* optional, keeps spacing cleaner */
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007BFF;
+  display: flex;
+  flex-direction: row;
+}
 
 
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
 
-burger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-  const username = "KibriyaJehangir"; // <-- Replace with your GitHub username
-    const projectCountElem = document.getElementById("project-count");
-    const projectsContainer = document.getElementById("projects");
+.nav-links li {
+  list-style: none;
+}
 
-    async function fetchProjects() {
-      try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-        const repos = await response.json();
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+  animation: pulse 4s infinite ease-in-out;
+}
 
-        projectCountElem.textContent = repos.length;
+/* Pulsing links */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
 
-        repos.forEach(repo => {
-          const projectDiv = document.createElement("div");
-          projectDiv.className = "project";
+.nav-links a:hover {
+  color: #007BFF;
+}
 
-          projectDiv.innerHTML = `
-            <h3>${repo.name}</h3>
-            <p>${repo.description || "No description"}</p>
-            <a href="${repo.html_url}" target="_blank">View on GitHub</a>
-            <a href="${repo.html_url}" target="_blank">Open Repo</a>
-          `;
+/* Burger Menu (for mobile) */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
-          projectsContainer.appendChild(projectDiv);
-        });
-      } catch (error) {
-        console.error("Error fetching GitHub repositories:", error);
-        projectCountElem.textContent = "Error";
-      }
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url(https://tse3.mm.bing.net/th/id/OIP.xt0LxepaFOOy9qif7Mr7QgHaE7?r=0&cb=ucfimg2ucfimg=1&w=626&h=417&rs=1&pid=ImgDetMain&o=7&rm=3);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 50px 20px;
+  overflow: hidden;
+  animation: backgroundShift 20s ease infinite;
+}
+
+/* Smooth background movement */
+@keyframes backgroundShift {
+  0% { background-position: center top; }
+  50% { background-position: center bottom; }
+  100% { background-position: center top; }
+}
+
+.hero-avatar {
+  border-radius: 50%;
+  margin-bottom: 20px;
+  width: 150px;
+  height: 150px;
+  border: 4px solid #fff;
+  animation: float 4s ease-in-out infinite, avatarGlow 3s ease-in-out infinite alternate;
+}
+
+/* Floating avatar animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Avatar glow */
+@keyframes avatarGlow {
+  0% { box-shadow: 0 0 5px #fff; }
+  100% { box-shadow: 0 0 25px #007BFF; }
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: slideIn 2s ease-out forwards, textWave 4s ease-in-out infinite;
+  opacity: 0;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 3s ease-out forwards, textPulse 5s infinite ease-in-out;
+  opacity: 0;
+}
+
+/* Slide in animation for h1 */
+@keyframes slideIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Fade in animation for paragraph */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Continuous text wave effect */
+@keyframes textWave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Paragraph pulsing */
+@keyframes textPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #fff;
+  color: #007BFF;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  animation: buttonGlow 3s infinite alternate;
+}
+
+.btn:hover {
+  background-color: #007BFF;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Button glowing animation */
+@keyframes buttonGlow {
+  0% { box-shadow: 0 0 5px #fff; }
+  100% { box-shadow: 0 0 20px #007BFF; }
+}
+
+/* About */
+.about, .projects, .contact {
+  padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: sectionWave 6s ease-in-out infinite;
+}
+
+/* Subtle wave effect */
+@keyframes sectionWave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+
+/* Section heading */
+.about h2, .projects h2, .contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  animation: slideInFromLeft 1s ease forwards;
+  opacity: 0;
+}
+
+/* Slide in animation for headings */
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Paragraph animation */
+.about p, .projects p, .contact p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* Fade in from bottom animation */
+@keyframes fadeInUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Subtle floating effect for cards or images inside sections */
+.about .card, .projects .card, .contact .card {
+  display: inline-block;
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  margin: 1rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about .card:hover, .projects .card:hover, .contact .card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* Fade in animation for cards */
+.about .card, .projects .card, .contact .card {
+  opacity: 0;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* Optional glowing underline for headings */
+.about h2::after, .projects h2::after, .contact h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #007BFF;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #0366d6;
+  word-break: break-word;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #007BFF; }
+  100% { box-shadow: 0 0 20px #007BFF; }
+}
+
+/* Projects Grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Contact */
+.contact p {
+  margin: 0.5rem 0;
+}
+
+.socials a {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #007BFF;
+  transition: all 0.3s ease;
+}
+
+.socials a:hover {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #f1f1f1;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    background: #fff;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    gap: 10px; /* <-- this automatically adds spacing between children */
+  }
+
+  /* Ensure all links inside nav-links are block */
+  .nav-links a,
+  .nav-links button {
+    display: block;
+    width: 100%; /* optional: full width */
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  /* General styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      margin: 0;
+      padding: 20px;
     }
 
-    fetchProjects();
-async function loadCertificates() {
-  const repo = "KibriyaJehangir/portfolio"; // Replace with your GitHub repo
-  const folder = "certificates";
-  const branch = "main"; 
-  const url = `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`;
-  const verificationFile = `https://raw.githubusercontent.com/${repo}/${branch}/${folder}/verification.txt`;
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #222;
+    }
 
-  try {
-    // Fetch certificate files
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    const files = await response.json();
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
 
-    // Fetch verification links
-    const verResponse = await fetch(verificationFile);
-    const verText = await verResponse.text();
-    const verLinks = verText.split('\n').map(line => line.trim());
+    /* Grid container */
+    #projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
-    const container = document.getElementById("certificates");
-    container.innerHTML = "";
+    /* Individual project card */
+    .project {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-    let certIndex = 0; // index to match verification links
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
 
-    files.forEach(file => {
-      // Skip verification.txt itself
-      if(file.name.toLowerCase() === "verification.txt") return;
+    .project h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+      color: #0366d6;
+      word-break: break-word;
+    }
 
-      const name = file.name.split(".")[0];
-      const card = document.createElement("div");
-      card.className = "certificate-card";
+    .project p {
+      font-size: 0.95rem;
+      color: #555;
+      min-height: 40px;
+    }
 
-      let verLink = verLinks[certIndex] || "#"; // get link from txt file
-      certIndex++;
+    .project a {
+      display: inline-block;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #0366d6;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
 
-      // Add https:// if missing (fixes localhost errors)
-      if (verLink && !verLink.startsWith("http://") && !verLink.startsWith("https://")) {
-        verLink = "https://" + verLink;
-      }
+    .project a:hover {
+      background-color: #024e9b;
+    }
 
-      if (file.name.match(/\.(jpg|jpeg|png)$/i)) {
-        card.innerHTML = `
-          <h3>${name}</h3>
-          <img src="${file.download_url}" alt="${name}">
-          <div class="buttons">
-            <a href="${file.download_url}" target="_blank" rel="noopener noreferrer">View Image</a>
-            <a href="${verLink}" target="_blank" rel="noopener noreferrer">Verify</a>
-          </div>
-        `;
-      } else if (file.name.match(/\.pdf$/i)) {
-        card.innerHTML = `
-          <h3>${name}</h3>
-          <div class="buttons">
-            <a href="${file.download_url}" target="_blank" rel="noopener noreferrer">View PDF</a>
-            <a href="${verLink}" target="_blank" rel="noopener noreferrer">Verify</a>
-          </div>
-        `;
-      }
+    /* Responsive adjustments */
+    @media (max-width: 500px) {
+      body { padding: 10px; }
+      .project { padding: 15px; }
+      .project h3 { font-size: 1.1rem; }
+      .project p { font-size: 0.9rem; }
+      .project a { font-size: 0.85rem; padding: 5px 10px; }
+    }
+    /* Skills Section */
+.skills {
+  padding: 5rem 1rem;
+  text-align: center;
+}
 
-      container.appendChild(card);
-    });
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+}
 
-  } catch (error) {
-    console.error("Error loading certificates:", error);
-    document.getElementById("certificates").innerHTML = "<p>Failed to load certificates.</p>";
+.skill-card {
+  background: rgba(0,123,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #007BFF;
+  font-weight: bold;
+}
+
+.skill-card i {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+  background: rgba(0,123,255,0.1);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== Main Heading ===== */
+.certificates h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  display: inline-block;
+  color: #000; /* black heading */
+  position: relative;
+  animation: slideInFromLeft 1s ease forwards;
+  opacity: 0;
+}
+
+/* Glow underline for heading */
+.certificates h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #007BFF;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #007BFF; }
+  100% { box-shadow: 0 0 20px #007BFF; }
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== Certificates Grid ===== */
+#certificates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ===== Individual Certificate Card ===== */
+.certificate-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.certificate-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #0366d6;
+  word-break: break-word;
+}
+
+/* Certificate image */
+.certificate-card img {
+  max-width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Buttons aligned horizontally */
+.certificate-card .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.certificate-card a {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: #0366d6;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.certificate-card a:hover {
+  background-color: #024e9b;
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .certificate-card img {
+    height: 100px;
+  }
+  .certificate-card h3 {
+    font-size: 1rem;
+  }
+}
+.contact-info {
+  display: flex;
+  flex-direction: column; /* stack email and phone */
+  align-items: center; /* center horizontally */
+  justify-content: flex-end; /* push them to bottom if section is tall */
+  margin-top: 2rem; /* spacing from text above */
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+.contact {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.socials {
+  margin-bottom: 1.5rem;
+}
+
+.socials a {
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-info {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+.contact p {
+  text-align: center;
+  width: 100%;
+  margin: 0.5rem auto;
+}
+html {
+  scroll-behavior: smooth;   /* for smooth scrolling */
+  scroll-padding-top: 80px;  /* adjust based on your header height */
+}
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.skill-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.sub-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.sub-skills li {
+  margin: 5px 0;
+}
+/* gigs grid: 2 per row always */
+.gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  gap: 28px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* gig card */
+.gig-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.gig-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+/* gig image - taller for more professional look */
+.gig-card img {
+  width: 100%;
+  height: 260px;          /* increased height */
+  object-fit: cover;
+  display: block;
+}
+
+/* gig title */
+.gig-card h3 {
+  margin: 14px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.4;
+  min-height: 3em;        /* reserve space for 2 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* gigs section container */
+#gigs {
+  max-width: 1100px;   /* limit width for large screens */
+  margin: 0 auto;      /* center horizontally */
+  padding: 40px 20px;  /* top/bottom + side padding */
+}
+
+/* gigs grid inside the section */
+.gigs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  gap: 28px;
+  margin-top: 20px;
+}
+#gig-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  margin: 15px auto 25px auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+#gig-search:focus {
+  border-color: #0073e6; /* highlight on focus */
+}
+/* default (light) */
+body {
+  background: #fff;
+  color: #000;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* dark theme when gigs section is active */
+body.dark-mode {
+  background: #000;
+  color: #fff;
+}
+
+/* make sure section-specific text adapts */
+.gigs h2, .gigs p, .gig-card h3 {
+  transition: color 0.4s ease;
+}
+body.dark-mode .gigs h2,
+body.dark-mode .gigs p,
+body.dark-mode .gig-card h3 {
+  color: #fff;
+}
+
+body.dark-mode .gig-card {
+  background: #111;
+  border: 1px solid #333;
+}
+.gigs-grid, #gigs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.gig-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gig-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gig-card:hover img {
+  transform: scale(1.1);
+  filter: brightness(50%);
+}
+
+.gig-card h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 8px 0;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  font-size: 50px;
+}
+/* Certificates Grid */
+#gigs-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* exactly 2 per row */
+  gap: 28px;
+  margin-top: 20px;
+}
+
+/* Certificate Card */
+.gig-card {
+  position: relative;
+  overflow: hidden;
+  width: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: block; /* ensures the anchor behaves like a block */
+}
+
+/* Certificate Image */
+.gig-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Black overlay effect on hover */
+.gig-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(50%);
+}
+
+/* Overlay title */
+.gig-card .overlay-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 50px;
+  transition: background 0.3s ease;
+}
+
+/* Darker overlay on hover */
+.gig-card:hover .overlay-title {
+  background: rgba(0, 0, 0, 0.8);
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+/* Skills Grid with 7 cards per row */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 7 cards per row */
+    gap: 20px; /* Reduced gap between the cards */
+    margin-top: 30px;
+}
+
+/* Styling for each skill card (focused, no effects, no text) */
+.skill-card {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    height: 150px; /* Adjusted height for image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed;
+    border-radius: 15px; /* Rounded corners for the cards */
+    background: url(https://64.media.tumblr.com/149fde84a581337a2623cc9bba0b5d66/tumblr_oaxh24U0651txeruoo1_540.gif); /* Semi-transparent dark background for focus */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for emphasis */
+    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+}
+
+/* Hover effect to increase the shadow when hovered */
+.skill-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+}
+
+/* Style for skill card images */
+.skill-card img {
+    width: 50%; /* Image takes up 50% of the card width */
+    height: 50%; /* Image takes up 50% of the card height */
+    object-fit: contain; /* Ensure the image is fully contained within the card */
+}
+/* Global Reset and Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Reset and Basic Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Main Heading with Black Color */
+/* Main Heading Style */
+.timeline h1 {
+    font-size: 1.8rem; /* Smaller font size for the heading */
+    font-weight: bold; /* Bold font weight */
+    color: #000; /* Black color for the heading */
+    text-align: center; /* Center the heading text */
+    margin-bottom: 50px; /* Space below the heading */
+    position: relative; /* To position the blue line */
+}
+
+/* Blue line in the center under the heading */
+.timeline h1::after {
+    content: ''; /* Creates an empty pseudo-element */
+    display: block;
+    width: 50px; /* Length of the blue line */
+    height: 3px; /* Thickness of the blue line */
+    background: #0366D6; /* Blue color */
+    position: absolute;
+    bottom: -10px; /* Position it just below the heading */
+    left: 50%; /* Position it in the center */
+    transform: translateX(-50%); /* Adjust the line to be perfectly centered */
+    border-radius: 2px; /* Slight rounded edges */
+}
+
+/* Glow animation for the blue line */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #0366D6; }
+    100% { box-shadow: 0 0 20px #0366D6; }
+}
+
+.timeline h1::after {
+    animation: glow 2s ease-in-out infinite alternate; /* Glow effect */
+}
+
+
+/* Timeline Item Container */
+.timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Add smooth reveal when the item is in view */
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Left and Right Alignment */
+.timeline-item.left {
+    align-items: flex-start;
+}
+
+.timeline-item.right {
+    align-items: flex-end;
+}
+
+/* Timeline Dots - Blue Color */
+.timeline-item .dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #0366D6; /* Blue color for dots */
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+/* Timeline Content Box */
+.timeline-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Timeline Content Heading */
+.timeline-content h2 {
+    font-size: 1.6rem;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+/* Timeline Content Paragraph */
+.timeline-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Date Formatting */
+time {
+    font-size: 1.2rem;
+    color: #000000;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Vertical Line Connecting Timeline Items */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background-color: #0366D6;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Add animation for timeline line when the item becomes visible */
+.timeline-item.visible::before {
+    background-color: #0366D6;
+}
+
+/* Add animation for dots filling when user scrolls */
+.timeline-item.visible .dot {
+    background-color: #0366D6; /* Keep blue color for the dot */
+    transform: scale(1.5); /* Slightly enlarge the dot when in view */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-item .dot {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item .timeline-content {
+        width: 90%;
+    }
+
+    .timeline-item::before {
+        left: 0;
+        transform: translateX(0);
+    }
+}
+
+/* Animation for Smooth Scroll */
+@keyframes fadeInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    animation: fadeInFromBottom 1s ease-out forwards;
+}
+/* By default, show the burger icon on mobile devices */
+.burger {
+    display: block;
+}
+
+/* Hide the burger icon on larger screens (desktop) */
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+}
+/* Show the burger icon by default on mobile */
+.burger {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.burger div {
+    width: 30px;
+    height: 4px;
+    margin: 6px 0;
+    background-color: #333;
+    transition: all 0.3s;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: none;  /* Initially hidden on mobile */
+    position: absolute;
+    top: 60px;  /* Adjust according to header height */
+    right: 0;
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links li {
+    padding: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: block;
+}
+
+/* When the burger menu is clicked (active state) */
+.burger.open div:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+}
+
+.burger.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
+}
+
+/* Show the nav links when the burger menu is open */
+.burger.open + .nav-links {
+    display: block;
+}
+
+/* Hide the burger icon on desktop */
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+    .nav-links {
+        display: flex;
+        position: static;
+        background-color: transparent;
+        width: auto;
+        justify-content: flex-end;
+    }
+}
+/* General Button Styles */
+.contact .socials a {
+    display: inline-block;
+    margin: 5px; /* Reduced margin for smaller buttons */
+    padding: 5px 15px; /* Smaller padding */
+    background-color: #8E7DBE; /* Choose a background color */
+    color: white;
+    font-size: 14px; /* Smaller font size */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hover Effect for Buttons */
+.contact .socials a:hover {
+    background-color: #6f5d92; /* Darker shade on hover */
+}
+
+/* Mobile-Friendly Styles */
+@media (max-width: 768px) {
+    .contact .socials {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contact .socials a {
+        margin: 5px;
+        padding: 5px 15px;
+        font-size: 12px; /* Smaller font size for mobile */
+        width: auto; /* Buttons won't take full width */
+        text-align: center;
+        border-radius: 5px; /* Rounded corners for mobile */
+    }
+}
+
+/* Larger Screen Styles (Tablet and Desktop) */
+@media (min-width: 769px) {
+    .contact .socials a {
+        padding: 5px 15px; /* Smaller padding */
+        font-size: 14px; /* Smaller font size */
+        width: auto; /* Keep buttons compact */
+    }
+}
+
+
+/* ===== Professional Responsiveness Fixes ===== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav-links {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .gig-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gig-card h3 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  h1, h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    word-wrap: break-word;
+  }
+
+  /* Reduce animations for smoother mobile experience */
+  body, .hero, .about, .projects, .contact {
+    animation: none;
   }
 }
 
-// ----------------- Load Certificates -----------------
-async function loadCertificates() {
-  const repo = "KibriyaJehangir/portfolio";
-  const folder = "certificates";
-  const branch = "main";
-  const apiUrl = `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`;
+@media (max-width: 500px) {
+  .nav-links {
+    text-align: left;
+    padding: 0.5rem;
+  }
 
-  const container = document.getElementById("gigs-container");
-  const countEl = document.getElementById("gig-count");
+  .gig-card img {
+    height: auto;
+  }
 
-  if (!container) return;
+  p {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+  }
+}
+body {
+  filter: brightness(1.2); /* 1.0 = normal, >1 = brighter */
+}
+/* ===== Cloudy Modern Background ===== */
+body {
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  overflow-x: hidden;
+  position: relative;
+}
 
-  container.innerHTML = "Loading...";
-  if (countEl) countEl.textContent = "Loading...";
+/* Cloud layers */
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+  filter: blur(20px);
+  animation: drift 60s linear infinite;
+}
 
-  try {
-    const res = await fetch(apiUrl);
-    if (!res.ok) throw new Error(`GitHub API HTTP ${res.status}`);
-    const files = await res.json();
+/* Different cloud sizes */
+.cloud.small { width: 120px; height: 60px; top: 20%; left: -150px; }
+.cloud.medium { width: 200px; height: 100px; top: 40%; left: -250px; }
+.cloud.large { width: 300px; height: 150px; top: 60%; left: -350px; }
 
-    // Filter image files only
-    const images = files.filter(f => /\.(jpe?g|png|gif|webp|svg)$/i.test(f.name));
+/* Cloud drifting animation */
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(120vw); }
+}
 
-    container.innerHTML = "";
-    let count = 0;
+/* Optional: modern glassy section look */
+.section {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.contact .socials a {
+ 
+  background-color: #047aff;
+  color: hsl(0, 0%, 100%);
+  
+}
+.skill-icon {
 
-    images.forEach(file => {
-      const filename = file.name;
-      const title = filename.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+  color: #000000; /* forces pure black */
+  fill: currentColor; /* ensures SVG uses the color */
+}
+/* Header */
+header {
+  width: 100%;              /* Full width */
+  position: fixed;          /* Stick to top */
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
 
-      // create anchor for full screen
-      const a = document.createElement("a");
-      a.href = file.download_url;
-      a.target = "_blank"; // open in new tab
-      a.rel = "noopener noreferrer";
-      a.className = "certificate-card";
+/* Navigation container */
+nav {
+  max-width: 1200px;
+  margin: 0 auto;           /* Center within header */
+  display: flex;
+  justify-content: space-between; /* Logo left, nav right */
+  align-items: center;
+  padding: 1rem;
+}
 
-      // create image
-      const img = document.createElement("img");
-      img.src = file.download_url;
-      img.alt = title;
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: row;     /* Keep logo left, nav right */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
-      // create overlay title
-      const h3 = document.createElement("h3");
-      h3.textContent = title;
-      h3.className = "overlay-title";
+  .logo {
+    flex: 1;                 /* Push logo to left */
+    text-align: left;
+  }
 
-      a.appendChild(img);
-      a.appendChild(h3);
-      container.appendChild(a);
+  .nav-links {
+    flex: 1;                 /* Push nav to right */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+/* ===== Burger Menu (Mobile Only) ===== */
+@media (max-width: 768px) {
+  /* Burger menu default */
+  .burger {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+  }
 
-      count++;
-    });
+  .burger div {
+    width: 30px;
+    height: 4px;
+    margin: 6px 0;
+    background-color: #333;
+    transition: all 0.3s;
+  }
 
-    if (countEl) countEl.textContent = count;
-    if (count === 0) container.innerHTML = "<p>No certificate images found.</p>";
+  /* Transform when open */
+  .burger.open div:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px;
+    position: relative;
+  }
 
-  } catch (err) {
-    console.error("Error loading certificates:", err);
-    container.innerHTML = `<p style="color:red">Failed to load certificates: ${err.message}</p>`;
-    if (countEl) countEl.textContent = "0";
+  .burger.open div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    top: -8px;
+    position: relative;
+  }
+
+  /* Show nav links when burger is open */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 60px; /* adjust based on header height */
+    right: 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .burger.open + .nav-links {
+    display: flex;
   }
 }
 
-// ----------------- Certificate Search -----------------
-function enableCertificateSearch() {
-  const searchInput = document.getElementById("gig-search");
-  const container = document.getElementById("gigs-container");
+/* ===== Desktop ===== */
+@media (min-width: 769px) {
+  .burger {
+    display: none; /* hide burger on larger screens */
+  }
 
-  if (!searchInput || !container) return;
-
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-    const cards = container.querySelectorAll(".certificate-card");
-
-    let visibleCount = 0;
-    cards.forEach(card => {
-      const title = card.querySelector("h3").textContent.toLowerCase();
-      if (title.includes(query)) {
-        card.style.display = "block";
-        visibleCount++;
-      } else {
-        card.style.display = "none";
-      }
-    });
-
-    document.getElementById("gig-count").textContent = visibleCount;
-  });
+  .nav-links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: 1rem;
+    background: transparent;
+    border: none;
+  }
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: rgb(12, 74, 156);
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px; /* adds space to the right of each button */
+}
+.btn:hover {
+  background-color: #555;
 }
 
-// ----------------- Init -----------------
-document.addEventListener("DOMContentLoaded", () => {
-  loadCertificates();
-  enableCertificateSearch();
-});
-// JavaScript to detect when an item is in the viewport and add the 'visible' class
-
-const timelineItems = document.querySelectorAll('.timeline-item');
-
-const isInViewport = (el) => {
-    const rect = el.getBoundingClientRect();
-    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
-};
-
-const handleScroll = () => {
-    timelineItems.forEach(item => {
-        if (isInViewport(item)) {
-            item.classList.add('visible');
-        }
-    });
-};
-
-// Run the scroll detection on page load and scroll
-window.addEventListener('scroll', handleScroll);
-window.addEventListener('load', handleScroll); // Initial check when the page loads
-// JavaScript to handle the toggle of the burger menu
-
-burger.addEventListener('click', () => {
-    // Toggle the 'open' class on the burger
-    burger.classList.toggle('open');
-    // Toggle the display of nav links
-    navLinks.classList.toggle('open');
-});
