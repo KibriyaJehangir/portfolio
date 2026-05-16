@@ -88,7 +88,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#gigs">Certifications</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="blogs.html">Blogs</a></li>
@@ -110,6 +110,8 @@
             <h1>Hello, I'm Kibriya</h1>
             <p>Junior Developer | Programmer | Tech Enthusiast</p>
             <a href="#projects" class="btn">View My Work</a>
+            <!-- New CV button -->
+            <a href="https://github.com/KibriyaJehangir/portfolio/blob/main/assets/CV.png?raw=true" class="btn" target="_blank">View My CV</a>
         </div>
     </section>
 
@@ -145,11 +147,17 @@
         </div>
 
         <!-- Kali Linux -->
-           <div class="skill-card">
-            <img src="https://static.vecteezy.com/system/resources/previews/027/208/110/non_2x/dragon-black-and-white-illustration-vector.jpg" alt="Kali Linux" class="skill-icon">
-           
-            </div>
-
+        
+    <div class="skill-card">
+    <img  style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 85%; height: 85%;
+    background-color: rgba(255, 255, 255, 0);
+    opacity: 1.5;   /* adjust 0.8 → 1 for full black */
+  "
+    src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kalilinux.svg" alt="Kali Linux" class="skill-icon">
+    </div>
         <!-- WordPress -->
         <div class="skill-card">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wordpress.svg" alt="WordPress" class="skill-icon">
@@ -218,10 +226,16 @@
 
         <!-- Java -->
         <div class="skill-card">
-            <img src="https://tse2.mm.bing.net/th/id/OIP.lf_Rd_QMXKS03yDpFgQd-gHaHX?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Java" class="skill-icon">
-          
+              <img style="
+    position: absolute;
+    top: 0; left: 0;
+    width: 85%; height: 85%;
+    background-color: rgba(255, 255, 255, 0);
+    opacity: 1.5;   /* adjust 0.8 → 1 for full black */
+  " src="https://cdn.jsdelivr.net/npm/simple-icons/icons/java.svg" 
+       alt="Java" 
+       class="skill-icon java-icon">
         </div>
-
         <!-- Python -->
         <div class="skill-card">
             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Python" class="skill-icon">
@@ -262,7 +276,7 @@
         <p>Total Projects: <span id="project-count">Loading...</span></p>
         <div id="projects"></div>
     </section>
-    <section id="gigs" class="gigs">   <h2 style="font-size: 50;";>My Certificates</h2>   <p>Total Certificates: <span id="gig-count">Loading...</span></p>   <!-- Search bar -->   <input type="text" id="gig-search" placeholder="Search gigs..." />   <div id="gigs-container" class="gigs-grid"></div> </section> 
+    <section id="gigs" class="gigs">   <h2 style="font-size: 50;";>My Certificates</h2>   <p>Total Certificates: <span id="gig-count">Loading...</span>  <div id="gigs-container" class="gigs-grid"></div> </section> 
    <!-- Timeline Section -->
     <section id="timeline" class="timeline">
         <h1>My Professional Timeline</h1>
