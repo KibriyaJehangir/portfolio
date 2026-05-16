@@ -1285,5 +1285,230 @@ time {
 }
 
 
+/* ===== Professional Responsiveness Fixes ===== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+  }
 
+  .nav-links {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .gig-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .gig-card h3 {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  h1, h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    word-wrap: break-word;
+  }
+
+  /* Reduce animations for smoother mobile experience */
+  body, .hero, .about, .projects, .contact {
+    animation: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links {
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  .gig-card img {
+    height: auto;
+  }
+
+  p {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+  }
+}
+body {
+  filter: brightness(1.2); /* 1.0 = normal, >1 = brighter */
+}
+/* ===== Cloudy Modern Background ===== */
+body {
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Cloud layers */
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.7;
+  filter: blur(20px);
+  animation: drift 60s linear infinite;
+}
+
+/* Different cloud sizes */
+.cloud.small { width: 120px; height: 60px; top: 20%; left: -150px; }
+.cloud.medium { width: 200px; height: 100px; top: 40%; left: -250px; }
+.cloud.large { width: 300px; height: 150px; top: 60%; left: -350px; }
+
+/* Cloud drifting animation */
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(120vw); }
+}
+
+/* Optional: modern glassy section look */
+.section {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.contact .socials a {
+ 
+  background-color: #047aff;
+  color: hsl(0, 0%, 100%);
+  
+}
+.skill-icon {
+
+  color: #000000; /* forces pure black */
+  fill: currentColor; /* ensures SVG uses the color */
+}
+/* Header */
+header {
+  width: 100%;              /* Full width */
+  position: fixed;          /* Stick to top */
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+/* Navigation container */
+nav {
+  max-width: 1200px;
+  margin: 0 auto;           /* Center within header */
+  display: flex;
+  justify-content: space-between; /* Logo left, nav right */
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: row;     /* Keep logo left, nav right */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    flex: 1;                 /* Push logo to left */
+    text-align: left;
+  }
+
+  .nav-links {
+    flex: 1;                 /* Push nav to right */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+/* ===== Burger Menu (Mobile Only) ===== */
+@media (max-width: 768px) {
+  /* Burger menu default */
+  .burger {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .burger div {
+    width: 30px;
+    height: 4px;
+    margin: 6px 0;
+    background-color: #333;
+    transition: all 0.3s;
+  }
+
+  /* Transform when open */
+  .burger.open div:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px;
+    position: relative;
+  }
+
+  .burger.open div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger.open div:nth-child(3) {
+    transform: rotate(-45deg);
+    top: -8px;
+    position: relative;
+  }
+
+  /* Show nav links when burger is open */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 60px; /* adjust based on header height */
+    right: 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .burger.open + .nav-links {
+    display: flex;
+  }
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 769px) {
+  .burger {
+    display: none; /* hide burger on larger screens */
+  }
+
+  .nav-links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: 1rem;
+    background: transparent;
+    border: none;
+  }
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: rgb(12, 74, 156);
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px; /* adds space to the right of each button */
+}
+.btn:hover {
+  background-color: #555;
+}
 
