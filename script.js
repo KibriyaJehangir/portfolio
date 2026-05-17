@@ -1,57 +1,45 @@
+// Shake animation on page load
+window.addEventListener("load", () => {
+  document.body.classList.add("shake-on-load");
+  setTimeout(() => {
+    document.body.classList.remove("shake-on-load");
+  }, 500); // matches animation duration
+});
 
-  window.addEventListener("load", () => {
-    document.body.classList.add("shake-on-load");
-
-    // Remove the class after animation ends (so it won’t repeat)
-    setTimeout(() => {
-      document.body.classList.remove("shake-on-load");
-    }, 500); // matches animation duration
-  });
-
-
+// Burger menu toggle
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelector('.nav-links');
 
 burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
   navLinks.classList.toggle('active');
 });
- const username = "KibriyaJehangir"; 
+
+// GitHub Projects
+const username = "KibriyaJehangir";
 const projectCountElem = document.getElementById("project-count");
 const mainProjectsContainer = document.getElementById("main-projects");
 const otherProjectsContainer = document.getElementById("other-projects");
 
-// List of projects to exclude completely
-const excludedProjects = ["KibriyaJehangir", "youtube-shorts_feed_shopify", "Kibriya_Video_Editor"]; 
-
-// ✅ Explicit list of your main projects
-const mainProjectsList = [
-  "portfolio",
-  "Type_50",
-
-];
+const excludedProjects = ["KibriyaJehangir", "youtube-shorts_feed_shopify", "Kibriya_Video_Editor"];
+const mainProjectsList = ["portfolio", "Type_50"];
 
 async function fetchProjects() {
   try {
     const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
     const repos = await response.json();
 
-    // Filter out excluded projects
     const filteredRepos = repos.filter(repo => !excludedProjects.includes(repo.name));
-
-    // Update total count
     projectCountElem.textContent = filteredRepos.length;
 
-    // Separate into main and other
     filteredRepos.forEach(repo => {
       const projectDiv = document.createElement("div");
       projectDiv.className = "project";
-
       projectDiv.innerHTML = `
         <h4>${repo.name}</h4>
         <p>${repo.description || "No description"}</p>
         <a href="${repo.html_url}" target="_blank">View on GitHub</a>
       `;
-
       if (mainProjectsList.includes(repo.name)) {
         mainProjectsContainer.appendChild(projectDiv);
       } else {
@@ -63,84 +51,16 @@ async function fetchProjects() {
     projectCountElem.textContent = "Error";
   }
 }
-
 fetchProjects();
 
-async function loadCertificates() {
-  const repo = "KibriyaJehangir/portfolio"; // Replace with your GitHub repo
-  const folder = "certificates";
-  const branch = "main"; 
-  const url = `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`;
-  const verificationFile = `https://raw.githubusercontent.com/${repo}/${branch}/${folder}/verification.txt`;
-
-  try {
-    // Fetch certificate files
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    const files = await response.json();
-
-    // Fetch verification links
-    const verResponse = await fetch(verificationFile);
-    const verText = await verResponse.text();
-    const verLinks = verText.split('\n').map(line => line.trim());
-
-    const container = document.getElementById("certificates");
-    container.innerHTML = "";
-
-    let certIndex = 0; // index to match verification links
-
-    files.forEach(file => {
-      // Skip verification.txt itself
-      if(file.name.toLowerCase() === "verification.txt") return;
-
-      const name = file.name.split(".")[0];
-      const card = document.createElement("div");
-      card.className = "certificate-card";
-
-      let verLink = verLinks[certIndex] || "#"; // get link from txt file
-      certIndex++;
-
-      // Add https:// if missing (fixes localhost errors)
-      if (verLink && !verLink.startsWith("http://") && !verLink.startsWith("https://")) {
-        verLink = "https://" + verLink;
-      }
-
-      if (file.name.match(/\.(jpg|jpeg|png)$/i)) {
-        card.innerHTML = `
-          <h3>${name}</h3>
-          <img src="${file.download_url}" alt="${name}">
-          <div class="buttons">
-            <a href="${file.download_url}" target="_blank" rel="noopener noreferrer">View Image</a>
-            <a href="${verLink}" target="_blank" rel="noopener noreferrer">Verify</a>
-          </div>
-        `;
-      } else if (file.name.match(/\.pdf$/i)) {
-        card.innerHTML = `
-          <h3>${name}</h3>
-          <div class="buttons">
-            <a href="${file.download_url}" target="_blank" rel="noopener noreferrer">View PDF</a>
-            <a href="${verLink}" target="_blank" rel="noopener noreferrer">Verify</a>
-          </div>
-        `;
-      }
-
-      container.appendChild(card);
-    });
-
-  } catch (error) {
-    console.error("Error loading certificates:", error);
-    document.getElementById("certificates").innerHTML = "<p>Failed to load certificates.</p>";
-  }
-}
-
-// ----------------- Load Certificates -----------------
+// Certificates Loader (unified version)
 async function loadCertificates() {
   const repo = "KibriyaJehangir/portfolio";
   const folder = "certificates";
   const branch = "main";
   const apiUrl = `https://api.github.com/repos/${repo}/contents/${folder}?ref=${branch}`;
 
-  const container = document.getElementById("gigs-container");
+  const container = document.getElementById("certificates") || document.getElementById("gigs-container");
   const countEl = document.getElementById("gig-count");
 
   if (!container) return;
@@ -153,42 +73,39 @@ async function loadCertificates() {
     if (!res.ok) throw new Error(`GitHub API HTTP ${res.status}`);
     const files = await res.json();
 
-    // Filter image files only
-    const images = files.filter(f => /\.(jpe?g|png|gif|webp|svg)$/i.test(f.name));
-
+    const images = files.filter(f => /\.(jpe?g|png|gif|webp|svg|pdf)$/i.test(f.name));
     container.innerHTML = "";
     let count = 0;
 
     images.forEach(file => {
       const filename = file.name;
       const title = filename.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+      const card = document.createElement("div");
+      card.className = "certificate-card";
 
-      // create anchor for full screen
-      const a = document.createElement("a");
-      a.href = file.download_url;
-      a.target = "_blank"; // open in new tab
-      a.rel = "noopener noreferrer";
-      a.className = "certificate-card";
+      if (file.name.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
+        card.innerHTML = `
+          <h3>${title}</h3>
+          <img src="${file.download_url}" alt="${title}">
+          <div class="buttons">
+            <a href="${file.download_url}" target="_blank" rel="noopener noreferrer">View Image</a>
+          </div>
+        `;
+      } else if (file.name.match(/\.pdf$/i)) {
+        card.innerHTML = `
+          <h3>${title}</h3>
+          <div class="buttons">
+            <a href="${file.download_url}" target="_blank" rel="noopener noreferrer">View PDF</a>
+          </div>
+        `;
+      }
 
-      // create image
-      const img = document.createElement("img");
-      img.src = file.download_url;
-      img.alt = title;
-
-      // create overlay title
-      const h3 = document.createElement("h3");
-      h3.textContent = title;
-      h3.className = "overlay-title";
-
-      a.appendChild(img);
-      a.appendChild(h3);
-      container.appendChild(a);
-
+      container.appendChild(card);
       count++;
     });
 
     if (countEl) countEl.textContent = count;
-    if (count === 0) container.innerHTML = "<p>No certificate images found.</p>";
+    if (count === 0) container.innerHTML = "<p>No certificate files found.</p>";
 
   } catch (err) {
     console.error("Error loading certificates:", err);
@@ -197,38 +114,29 @@ async function loadCertificates() {
   }
 }
 
-
-// ----------------- Init -----------------
+// Init
 document.addEventListener("DOMContentLoaded", () => {
   loadCertificates();
-  enableCertificateSearch();
+  if (typeof enableCertificateSearch === "function") {
+    enableCertificateSearch();
+  }
 });
-// JavaScript to detect when an item is in the viewport and add the 'visible' class
 
+// Timeline scroll reveal
 const timelineItems = document.querySelectorAll('.timeline-item');
 
 const isInViewport = (el) => {
-    const rect = el.getBoundingClientRect();
-    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
+  const rect = el.getBoundingClientRect();
+  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight && rect.right <= window.innerWidth;
 };
 
 const handleScroll = () => {
-    timelineItems.forEach(item => {
-        if (isInViewport(item)) {
-            item.classList.add('visible');
-        }
-    });
+  timelineItems.forEach(item => {
+    if (isInViewport(item)) {
+      item.classList.add('visible');
+    }
+  });
 };
 
-// Run the scroll detection on page load and scroll
 window.addEventListener('scroll', handleScroll);
-window.addEventListener('load', handleScroll); // Initial check when the page loads
-// JavaScript to handle the toggle of the burger menu
-
-burger.addEventListener('click', () => {
-    // Toggle the 'open' class on the burger
-    burger.classList.toggle('open');
-    // Toggle the display of nav links
-    navLinks.classList.toggle('open');
-});
-
+window.addEventListener('load', handleScroll);
