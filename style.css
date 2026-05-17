@@ -797,7 +797,6 @@ body.dark-mode .gig-card {
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  background: url(https://64.media.tumblr.com/149fde84a581337a2623cc9bba0b5d66/tumblr_oaxh24U0651txeruoo1_540.gif);
   background-attachment: fixed;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: box-shadow 0.3s ease;
