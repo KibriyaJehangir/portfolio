@@ -797,6 +797,7 @@ body.dark-mode .gig-card {
   justify-content: center;
   align-items: center;
   border-radius: 15px;
+  
   background-attachment: fixed;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: box-shadow 0.3s ease;
@@ -1297,4 +1298,64 @@ body {
   overflow-x: hidden;
   position: relative;
   transition: background 0.4s ease, color 0.4s ease;
+}
+.skills {
+  background: linear-gradient(120deg, #e0f7fa, #ffffff, #d0eaff);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Center headings for Main Projects, Other Projects, and Certificates */
+.projects h3,
+#main-projects h2,
+#other-projects h2,
+.certificates h2 {
+  text-align: center;
+  display: block;   /* ensures proper centering */
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Center Certificates and Timeline Headings */
+.certificates,
+.timeline {
+  text-align: center; /* parent centers its children */
+}
+
+.certificates h2,
+
+/* Professional Timeline Heading */
+.timeline h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  margin-bottom: 80px; /* increased margin for more space */
+  position: relative;
+}
+/* Greyish background for skill cards */
+.skill-card {
+  background-color: #e5f9fb;   /* light grey */
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect with slightly darker grey */
+.skill-card:hover {
+  background-color: #e6e6e6;   /* darker grey on hover */
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+/* Remove padding from skill cards on mobile */
+@media (max-width: 768px) {
+  .skill-card {
+    padding: 0 !important;   /* no padding on mobile */
+  }
 }
