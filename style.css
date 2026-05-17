@@ -9,9 +9,7 @@
 
 
 /* Add shake effect */
-body.shake-on-load {
-  animation: shake 0.5s ease;
-}
+
 /* Continuous slight up and down movement */
 @keyframes floatUpDown {
   0% { transform: translateY(0px); }
@@ -1335,9 +1333,7 @@ time {
     font-size: clamp(0.9rem, 3.5vw, 1rem);
   }
 }
-body {
-  filter: brightness(1.2); /* 1.0 = normal, >1 = brighter */
-}
+
 /* ===== Cloudy Modern Background ===== */
 body {
   background: linear-gradient(to bottom, #e0f7fa, #ffffff);
@@ -1512,3 +1508,121 @@ nav {
   background-color: #555;
 }
 
+/* Float the Botpress chat bubble */
+.bpw-floating-button {
+  position: fixed;       /* keep it on screen */
+  bottom: 20px;          /* adjust vertical position */
+  right: 20px;           /* adjust horizontal position */
+  z-index: 9999;         /* keep it above other elements */
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+/* Reuse your existing floatUpDown animation */
+@keyframes floatUpDown {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Force-disable transforms/animations that break fixed positioning */
+body, .hero, .about, .projects, .contact {
+  animation: none !important;
+  transform: none !important;}
+/* Target hero CV + Work buttons on very small phones */
+@media (max-width: 380px) {
+  .hero .btn {
+    display: inline-block !important;
+    min-width: 80px !important;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    margin: 4px !important;   /* spacing between them */
+  }
+
+  .hero-content {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+}
+/* Tablet screens */
+@media (max-width: 768px) {
+  header {
+    padding: 4px 24px;   /* small top/bottom, large left/right */
+  }
+  nav {
+    padding: 8px 24px;   /* same inside nav */
+  }
+}
+
+/* Small phones (Galaxy S8, Z Fold folded ~350px) */
+@media (max-width: 380px) {
+  header {
+    padding: 2px 16px;   /* even smaller top/bottom, still wide left/right */
+  }
+  nav {
+    padding: 5px 16px;
+  }
+}
+/* Disable clicks/taps on skill cards for mobile */
+@media (max-width: 768px) {
+  .skill-card {
+    pointer-events: none;   /* disables all click/tap interactions */
+    user-select: none;      /* prevents text/image selection */
+    touch-action: none;     /* stops long-press or tap actions */
+  }
+}
+@media (max-width: 768px) {
+  .skill-card {
+    height: 70px; /* smaller height on mobile */
+  }
+}
+/* Remove grid from the parent */
+#projects {
+  display: block;   /* stack children vertically */
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Headings styling */
+.projects h3 {
+  font-size: 1.6rem;
+  margin: 30px 0 15px;
+  color: #000000;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+/* Apply grid only inside subsections */
+#main-projects,
+#other-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+/* Section headings with glowing blue underline */
+.about h2, .projects h2, .contact h2, .gigs h2, .timeline h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  animation: slideInFromLeft 1s ease forwards;
+  opacity: 0;
+}
+
+/* Blue underline for all section headings */
+.about h2::after, .projects h2::after, .contact h2::after, .gigs h2::after, .timeline h1::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #007BFF;
+  margin: 10px auto 0;
+  border-radius: 2px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+.sql-icon {
+  filter: grayscale(100%) brightness(0); /* forces pure black */
+}
