@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
+
+    
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script> <script src="https://files.bpcontent.cloud/2026/05/16/22/20260516220244-JJ400636.js" defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kibriya Portfolio</title>
@@ -22,7 +26,7 @@
     <meta property="og:image" content="https://kibriyajehangir.github.io/portfolio/assets/favicon.png">
 
     <!-- Link to External Stylesheets -->
-    <link rel="stylesheet" href="style.css">
+    
     
     <!-- Favicon for various devices -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -79,8 +83,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.14.0/devicon.min.css">
 
 </head>
+  ...
+
+
 
 <body>
+  
     <!-- Header Section -->
     <header>
         <nav>
@@ -118,20 +126,63 @@
     <!-- About Section -->
     <section id="about" class="about">
         <h2>About Me</h2>
-        <p>
-            Hi, I’m <strong>Kibriya</strong>, a passionate <strong>programmer</strong>, <strong>aspiring entrepreneur</strong>, and lifelong learner. From a young age, I’ve been fascinated by <strong>coding and technology</strong>, mastering multiple programming languages including <strong>Python, Java, C++, Flutter, and Android Studio</strong>. My projects range from <strong>AI-powered games</strong> to <strong>web development</strong>, and I enjoy creating <strong>innovative solutions</strong> that combine logic with creativity.
-        </p>
-        <p>
-            Beyond programming, I am deeply interested in <strong>business, networking</strong>, and emerging technologies like <strong>blockchain</strong> and <strong>quantum computing</strong>. My goal is to merge <strong>technical skills</strong> with <strong>business acumen</strong> to build meaningful projects and eventually run <strong>successful ventures</strong>.
-        </p>
-        <p>
-            I believe in <strong>learning by doing</strong>, which is why I create <strong>practical solutions, tutorials, and tools</strong> for others to explore and grow. My website is a reflection of my journey—sharing my <strong>work, insights, and resources</strong> to inspire and help fellow learners and developers.
-        </p>
-        <p>Let’s <strong>innovate, code, and create together!</strong></p>
-    </section>
+       <p>
+    Hi, I’m <strong>Kibriya</strong>, deeply focused on <strong>data science</strong>, <strong>data analysis</strong> and <strong>data engineering</strong>, alongside being a passionate <strong>programmer</strong>, <strong>aspiring entrepreneur</strong>, and lifelong learner. From a young age, I’ve been fascinated by <strong>coding and technology</strong>, mastering multiple programming languages including <strong>Python, Java, C++, Flutter, and Android Studio</strong>. My projects range from <strong>AI-powered games</strong> to <strong>web development</strong>, and I enjoy creating <strong>innovative solutions</strong> that combine logic with creativity.
+</p>
+<p>
+    Beyond programming, I am deeply interested in <strong>business, networking</strong>, and emerging technologies like <strong>blockchain</strong> and <strong>quantum computing</strong>. My goal is to merge <strong>technical skills</strong> with <strong>business acumen</strong> to build meaningful projects and eventually run <strong>successful ventures</strong>. With <strong>data science</strong> and <strong>data analysis</strong> as my main focus, I aim to bridge creativity, analytics, and entrepreneurship for impactful solutions.
+</p>
+<p>
+    I believe in <strong>learning by doing</strong>, which is why I create <strong>practical solutions, tutorials, and tools</strong> for others to explore and grow. My website is a reflection of my journey—sharing my <strong>work, insights, and resources</strong> to inspire and help fellow learners and developers, especially those exploring <strong>data-driven innovation</strong>.
+</p>
+<p>Let’s <strong>innovate, code, analyze, and create together!</strong></p>
 
+    </section>
+    <!-- Main skills -->
+     
 <section class="about skills" id="skills" >
-    <h2>My Skills</h2>
+    <h2>Main Skills</h2>
+    <div class="skills-grid">
+
+        
+      
+
+       
+        <!-- SQL (custom simple text logo) -->
+<div class="skill-card">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" 
+       alt="SQL" 
+       class="skill-icon sql-icon">
+</div>
+
+
+<!-- Power BI -->
+<div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/powerbi.svg" alt="Power BI" class="skill-icon">
+</div>
+
+<!-- Tableau -->
+<div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tableau.svg" alt="Tableau" class="skill-icon">
+</div>
+
+<!-- NumPy -->
+<div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/numpy.svg" alt="NumPy" class="skill-icon">
+</div>
+
+<!-- Pandas -->
+<div class="skill-card">
+    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/pandas.svg" alt="Pandas" class="skill-icon">
+</div>
+
+
+    </div>
+</section>
+
+<!-- other skills  -->
+<section class="about skills" id="skills" >
+    <h2>Other skills</h2>
     <div class="skills-grid">
 
         <!-- Git -->
@@ -270,12 +321,18 @@
 </section>
 
 
-    <!-- Projects Section -->
+<!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2>My GitHub Projects</h2>
-        <p>Total Projects: <span id="project-count">Loading...</span></p>
-        <div id="projects"></div>
-    </section>
+  <h2>My GitHub Projects</h2>
+  <p>Total Projects: <span id="project-count">Loading...</span></p>
+
+  <h3>Main Projects</h3>
+  <div id="main-projects"></div>
+
+  <h3>Other Projects</h3>
+  <div id="other-projects"></div>
+</section>
+
     <section id="gigs" class="gigs">   <h2 style="font-size: 50;";>My Certificates</h2>   <p>Total Certificates: <span id="gig-count">Loading...</span>  <div id="gigs-container" class="gigs-grid"></div> </section> 
    <!-- Timeline Section -->
     <section id="timeline" class="timeline">
@@ -387,11 +444,10 @@
         </div>
 
   </section>
- 
+
 
 <script src="script.js"></script>
-</body>
-</html>
+
 
    
 
@@ -400,7 +456,8 @@
         <p >&copy; 2026 Kibriya. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+   
+
 </body>
 </html>
 
