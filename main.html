@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- Character Encoding -->
+  <meta charset="UTF-8">
+
+  <!-- Viewport for Responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title -->
+  <title>Kibriya Portfolio - Junior Data Analyst | Data-Driven Problem Solver | Tech Enthusiast</title>
+
+  <!-- Favicon for various devices -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css"> <!-- keep both if you use them separately -->
+
+
+  <!-- SEO Meta Tags -->
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Kibriya's Portfolio showcasing skills, projects, certifications, and blogs. Explore the work of a passionate programmer and aspiring entrepreneur.">
+  <meta name="keywords" content="Kibriya, portfolio, junior developer, programmer, coding, technology, Python, Java, C++, Flutter, Android Studio, blockchain, AI, business, entrepreneurship">
+  <meta name="author" content="Kibriya Jehangir">
+
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kibriya Portfolio">
+  <meta property="og:description" content="Explore Kibriya's portfolio, featuring programming skills, personal projects, certifications, and insights.">
+  <meta property="og:url" content="https://kibriyajehangir.github.io/portfolio/index.html">
+  <meta property="og:image" content="https://kibriyajehangir.github.io/portfolio/assets/favicon.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kibriya Portfolio">
+  <meta name="twitter:description" content="Explore Kibriya's portfolio, featuring programming skills, personal projects, certifications, and insights.">
+  <meta name="twitter:image" content="https://kibriyajehangir.github.io/portfolio/assets/favicon.png">
+</head>
+ <style>
+   
+    .glow-circle {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(135, 176, 219, 0.15); /* Transparent fill */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(0,123,255,0.4); /* Softer glow */
+  transition: transform 0.1s ease-out;
+  z-index: 9999; /* Ensure it stays above cards/headers */
+}
+
+/* ===== Boot-transition overlay (continues the loading screen's atmosphere) ===== */
+.boot-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+
+.boot-overlay.boot-hide{
+  opacity: 0;
+}
+
+.boot-grid{
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,123,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,123,255,0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 50% 40%, rgba(0,0,0,0.65) 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, rgba(0,0,0,0.65) 0%, transparent 72%);
+}
+
+.boot-particle{
+  position: absolute;
+  font-family: Consolas, "Courier New", monospace;
+  color: rgba(0,123,255,0.18);
+  font-weight: 700;
+  user-select: none;
+  animation: bootFloatUp linear infinite;
+}
+
+@keyframes bootFloatUp{
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .boot-particle{ animation: none; opacity: 0; }
+}
+
+  </style>
+</head>
+<body>
+  <div id="bootOverlay" class="boot-overlay"></div>
+  <div class="glow-circle" id="glowCircle"></div>
+
+    <!-- Header Section -->
+    <header>
+        <nav>
+   <div class="logo">
+    <span class="keyword"></span>
+    <span class="classname">Kibriya</span>
+    <span class="brace">{</span>
+    <span class="cursor"></span>
+    <span class="brace">}</span>
+</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#gigs">Certifications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="uploads.html">Uploads</a></li>
+                <li> <a href="https://wa.me/923165288913?text=Hello%20Kibriya,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20job%20opportunity."
+           class="hire-btn"
+           target="_blank"
+           rel="noopener noreferrer">
+            💼 Hire Me
+        </a></li>
+            </ul>
+            
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+  <section class="hero">
+  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+    <span class="toggle-track">
+      <span class="toggle-indicator">
+        <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </span>
+    </span>
+  </button>
+
+  <div class="hero-content">
+      <img src="https://github.com/KibriyaJehangir.png" alt="Kibriya's GitHub Avatar" class="hero-avatar" width="150" height="150">
+      <h1>Hello, I'm Kibriya</h1>
+      <p>Junior Data Analyst | Data-Driven Problem Solver</p>
+      
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="https://github.com/KibriyaJehangir/portfolio/blob/main/assets/CV.png?raw=true" class="btn" target="_blank">View My CV</a>
+  </div>
+</section>
+    <!-- About Section -->
+   <section id="about" class="about">
+    <h2>About Me</h2>
+
+    <p>
+        Hi, I’m <strong>Kibriya</strong>, a <strong>Junior Data Analyst</strong> passionate about transforming 
+        raw data into meaningful insights. I specialize in <strong>data analysis, data visualization, 
+        and business intelligence</strong>, using tools like <strong>SQL, Python, Excel, and Power BI</strong> 
+        to clean, analyze, and present data-driven solutions.
+    </p>
+
+    <p>
+        My journey started with a strong interest in <strong>programming and technology</strong>, which helped 
+        me develop problem-solving skills and a logical approach to tackling complex challenges. 
+        Through hands-on projects, I have worked on <strong>data cleaning, exploratory analysis, dashboards, 
+        and reporting</strong> to understand patterns and uncover valuable insights.
+    </p>
+
+    <p>
+        I enjoy combining <strong>technical skills with analytical thinking</strong> to solve real-world 
+        problems. My goal is to continuously improve my expertise in <strong>data analytics, business 
+        intelligence, and emerging technologies</strong> while creating solutions that help organizations 
+        make better decisions.
+    </p>
+
+    <p>
+        I believe in <strong>learning by doing</strong>, which drives me to build practical projects, 
+        explore new technologies, and share my knowledge with others. This portfolio represents my 
+        journey, projects, and passion for using <strong>data to create meaningful impact</strong>.
+    </p>
+</section>
+    <!-- Main skills -->
+     
+<section class="about skills" id="skills" >
+    <h2>Main Skills</h2>
+    <div class="skills-grid">
+
+        
+      
+
+<!-- SQL -->
+<div class="skill-card" style="--skill-color:#00758F;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+       alt="SQL"
+       class="skill-icon">
+  <span class="skill-name">SQL</span>
+</div>
+
+<!-- Power BI -->
+<div class="skill-card" style="--skill-color:#F2C811;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg"
+       alt="Power BI"
+       class="skill-icon">
+  <span class="skill-name">Power BI</span>
+</div>
+
+<!-- Tableau -->
+<div class="skill-card" style="--skill-color:#E97627;">
+  <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg"
+       alt="Tableau"
+       class="skill-icon">
+  <span class="skill-name">Tableau</span>
+</div>
+
+<!-- NumPy -->
+<div class="skill-card" style="--skill-color:#4DABCF;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+       alt="NumPy"
+       class="skill-icon">
+  <span class="skill-name">NumPy</span>
+</div>
+
+<!-- Pandas -->
+<div class="skill-card" style="--skill-color:#150458;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
+       alt="Pandas"
+       class="skill-icon">
+  <span class="skill-name">Pandas</span>
+</div>
+
+    </div>
+</section>
+<section id="data-process" class="data-process-section">
+  <h2>My Data Analysis Process</h2>
+  <div class="process-card">
+    <div class="process-header">
+      
+      <p>I follow a structured analytics workflow to transform raw information into meaningful, actionable business insights.</p>
+    </div>
+
+    <div class="process-tabs">
+      <button class="tab-btn active" onclick="openProcessTab(event, 'step1')">1. Collection</button>
+      <button class="tab-btn" onclick="openProcessTab(event, 'step2')">2. Cleaning</button>
+      <button class="tab-btn" onclick="openProcessTab(event, 'step3')">3. EDA</button>
+      <button class="tab-btn" onclick="openProcessTab(event, 'step4')">4. Analysis</button>
+      <button class="tab-btn" onclick="openProcessTab(event, 'step5')">5. Reporting</button>
+    </div>
+
+    <div class="process-body">
+      <div id="step1" class="tab-content active">
+        <h3>1. Business Understanding & Data Collection</h3>
+        <p>Before analyzing data, I define key questions and understand business requirements. Data is retrieved from databases, spreadsheets, APIs, and cloud systems.</p>
+        <div class="tools-used">
+          <strong>Tools Used:</strong> SQL (MySQL, PostgreSQL), Excel, APIs, Python (Requests, Pandas), ERP/CRM Systems
+        </div>
+      </div>
+
+      <div id="step2" class="tab-content">
+        <h3>2. Data Cleaning & Preparation</h3>
+        <p>I handle missing values, duplicates, and inconsistent formats to transform raw data into an accurate, clean, and structured dataset ready for deep analysis.</p>
+        <div class="tools-used">
+          <strong>Tools Used:</strong> Power Query, Excel (Pivot Tables), SQL (Joins/Filters), Python (Pandas, NumPy)
+        </div>
+      </div>
+
+      <div id="step3" class="tab-content">
+        <h3>3. Exploratory Data Analysis (EDA)</h3>
+        <p>I examine datasets to uncover underlying patterns, trends, and anomalies. This statistical exploration reveals preliminary insights before advanced modeling.</p>
+        <div class="tools-used">
+          <strong>Tools Used:</strong> Python (Matplotlib, Seaborn), Excel, SQL Queries, Jupyter Notebooks
+        </div>
+      </div>
+
+      <div id="step4" class="tab-content">
+        <h3>4. Data Analysis & Statistical Investigation</h3>
+        <p>Applying analytical techniques and aggregations to calculate KPIs, evaluate performance metrics, and deliver definitive answers to strategic questions.</p>
+        <div class="tools-used">
+          <strong>Tools Used:</strong> SQL (Window Functions), Python (SciPy, Statsmodels), Excel, Power BI
+        </div>
+      </div>
+
+      <div id="step5" class="tab-content">
+        <h3>5. Data Visualization & Reporting</h3>
+        <p>I design intuitive, interactive dashboards and visual reports that communicate complex analytics clearly to stakeholders for confident decision-making.</p>
+        <div class="tools-used">
+          <strong>Tools Used:</strong> Power BI, Tableau, Excel Dashboards, Matplotlib / Seaborn
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="featured-projects-section" class="projects-section">
+  <h2 class="section-title">Featured Data Analytics Projects</h2>
+  <p class="section-subtitle">A showcase of real-world datasets, dashboards, and automated workflows.</p>
+
+  <div id="featured-projects-container" class="projects-grid">
+    <div class="loading-spinner">Loading projects...</div>
+  </div>
+</section>
+<!-- other skills  -->
+<section class="about skills" id="skills" >
+    <h2>Other skills</h2>
+    <div class="skills-grid">
+
+    <!-- Git -->
+<div class="skill-card" style="--skill-color:#F05032;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+       alt="Git"
+       class="skill-icon">
+  <span class="skill-name">Git</span>
+</div>
+
+<!-- GitHub -->
+<div class="skill-card" style="--skill-color:#000000;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+       alt="GitHub"
+       class="skill-icon">
+  <span class="skill-name">GitHub</span>
+</div>
+
+<!-- Kali Linux -->
+<div class="skill-card" style="--skill-color:#5C6BC0;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kalilinux/kalilinux-original.svg"
+       alt="Kali Linux"
+       class="skill-icon">
+  <span class="skill-name">Kali Linux</span>
+</div>
+
+<!-- WordPress -->
+<div class="skill-card" style="--skill-color:#21759B;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg"
+       alt="WordPress"
+       class="skill-icon">
+  <span class="skill-name">WordPress</span>
+</div>
+
+<!-- Elementor -->
+<div class="skill-card" style="--skill-color:#92003B;">
+  <img src="https://thesvg.org/icons/elementor/default.svg"
+       alt="Elementor"
+       class="skill-icon">
+  <span class="skill-name">Elementor</span>
+</div>
+
+<!-- Shopify -->
+<div class="skill-card" style="--skill-color:#95BF47;">
+  <img src="https://cdn.worldvectorlogo.com/logos/shopify.svg"
+       alt="Shopify"
+       class="skill-icon">
+  <span class="skill-name">Shopify</span>
+</div>
+
+<!-- Flutter -->
+<div class="skill-card" style="--skill-color:#42A5F5;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+       alt="Flutter"
+       class="skill-icon">
+  <span class="skill-name">Flutter</span>
+</div>
+
+<!-- Dart -->
+<div class="skill-card" style="--skill-color:#0175C2;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+       alt="Dart"
+       class="skill-icon">
+  <span class="skill-name">Dart</span>
+</div>
+
+<!-- Android Studio -->
+<div class="skill-card" style="--skill-color:#3DDC84;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+       alt="Android Studio"
+       class="skill-icon">
+  <span class="skill-name">A.studio</span>
+</div>
+
+<!-- JavaScript -->
+<div class="skill-card" style="--skill-color:#F7DF1E;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+       alt="JavaScript"
+       class="skill-icon">
+  <span class="skill-name">JavaScript</span>
+</div>
+
+<!-- CSS -->
+<div class="skill-card" style="--skill-color:#1572B6;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+       alt="CSS"
+       class="skill-icon">
+  <span class="skill-name">CSS</span>
+</div>
+
+<!-- HTML -->
+<div class="skill-card" style="--skill-color:#E44D26;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+       alt="HTML"
+       class="skill-icon">
+  <span class="skill-name">HTML</span>
+</div>
+
+<!-- C++ -->
+<div class="skill-card" style="--skill-color:#00599C;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+       alt="C++"
+       class="skill-icon">
+  <span class="skill-name">C++</span>
+</div>
+
+<!-- C -->
+<div class="skill-card" style="--skill-color:#A8B9CC;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+       alt="C"
+       class="skill-icon">
+  <span class="skill-name">C</span>
+</div>
+
+<!-- Java -->
+<div class="skill-card" style="--skill-color:#F89820;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+       alt="Java"
+       class="skill-icon">
+  <span class="skill-name">Java</span>
+</div>
+
+<!-- Python -->
+<div class="skill-card" style="--skill-color:#5d0ca8;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+       alt="Python"
+       class="skill-icon">
+  <span class="skill-name">Python</span>
+</div>
+
+<!-- Liquid -->
+<div class="skill-card" style="--skill-color:#021a5c;">
+  <img src="https://api.iconify.design/mdi/water.svg"
+       alt="Liquid"
+       class="skill-icon">
+  <span class="skill-name">Liquid</span>
+</div>
+
+<!-- SQLite -->
+<div class="skill-card" style="--skill-color:#003B57;">
+  <img src="https://cdn.simpleicons.org/sqlite"
+       alt="SQLite"
+       class="skill-icon">
+  <span class="skill-name">SQLite</span>
+</div>
+
+<!-- Adobe Photoshop -->
+<div class="skill-card" style="--skill-color:#31A8FF;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+       alt="Adobe Photoshop"
+       class="skill-icon">
+  <span class="skill-name">Photoshop</span>
+</div>
+
+<!-- Adobe Illustrator -->
+<div class="skill-card" style="--skill-color:#FF9A00;">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
+       alt="Adobe Illustrator"
+       class="skill-icon">
+  <span class="skill-name">Illustrator</span>
+</div>
+</section>
+
+<section id="gigs" class="certificates-section">
+  <div class="section-header">
+    <h2>My Certifications</h2>
+    <p class="cert-subtitle">Verified Achievements & Accreditations</p>
+    <div class="cert-counter-badge">
+      Total Certificates: <span id="gig-count">Loading...</span>
+    </div>
+  </div>
+
+  <div id="gigs-container" class="certificates-grid">
+    </div>
+</section> 
+<!-- Projects Section -->
+    <section id="projects" class="projects">
+  <h2>My GitHub Projects</h2>
+  <p>Total Projects: <span id="project-count">Loading...</span></p>
+
+  <h3>Main Projects</h3>
+  <div id="main-projects"></div>
+
+  <h3>Other Projects</h3>
+  <div id="other-projects"></div>
+  </section>
+
+
+   <!-- Timeline Section -->
+    <section id="timeline" class="timeline">
+        <h1>My Career Timeline</h1>
+
+        <!-- Timeline Item 1: Left -->
+        <article class="timeline-item left">
+            <div class="dot"></div>
+            <time datetime="2019-03-01">March 2019</time>
+            <div class="timeline-content">
+                <h2>Started Learning C++ at Age 9</h2>
+                <p>At 9 years old, I began my programming journey by learning C++. This laid the foundation for my understanding of computer science.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 2: Right -->
+        <article class="timeline-item right">
+            <div class="dot"></div>
+            <time datetime="2020-06-01">June 2020</time>
+            <div class="timeline-content">
+                <h2>Expanded Skills with Java</h2>
+                <p>I expanded my skills by learning Java, which allowed me to understand object-oriented programming concepts more deeply.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 3: Left -->
+        <article class="timeline-item left">
+            <div class="dot"></div>
+            <time datetime="2021-01-01">January 2021</time>
+            <div class="timeline-content">
+                <h2>Started Android Development</h2>
+                <p>I began developing mobile apps using Android Studio, learning about UI/UX design and mobile app architecture.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 4: Right -->
+        <article class="timeline-item right">
+            <div class="dot"></div>
+            <time datetime="2022-04-01">April 2022</time>
+            <div class="timeline-content">
+                <h2>Learned Python Programming</h2>
+                <p>After mastering Java, I learned Python, which became my go-to language for automation, scripting, and web development.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 5: Left -->
+        <article class="timeline-item left">
+            <div class="dot"></div>
+            <time datetime="2023-02-01">February 2023</time>
+            <div class="timeline-content">
+                <h2>Started Learning C for Low-Level Programming</h2>
+                <p>I deepened my understanding of low-level programming with C, which helped me to work closer with hardware and memory management.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 6: Right -->
+        <article class="timeline-item right">
+            <div class="dot"></div>
+            <time datetime="2024-08-01">August 2024</time>
+            <div class="timeline-content">
+                <h2>Learned HTML & CSS for Web Development</h2>
+                <p>I dove into web development, starting with HTML and CSS to create beautiful, responsive websites from scratch.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 7: Left -->
+        <article class="timeline-item left">
+            <div class="dot"></div>
+            <time datetime="2025-05-01">May 2025</time>
+            <div class="timeline-content">
+                <h2>Mastered JavaScript for Front-End Development</h2>
+                <p>JavaScript added interactivity to my websites, and I began to master front-end development, including DOM manipulation and APIs.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 8: Right -->
+        <article class="timeline-item right">
+            <div class="dot"></div>
+            <time datetime="2025-08-01">August 2025</time>
+            <div class="timeline-content">
+                <h2>Participated in Entrepreneurship Program</h2>
+                <p>Joined an entrepreneurship program to learn about startup culture, business strategies, and how to build a successful business from scratch.</p>
+            </div>
+        </article>
+
+        <!-- Timeline Item 9: Left -->
+        <article class="timeline-item left">
+            <div class="dot"></div>
+            <time datetime="2026-01-01">January 2026</time>
+            <div class="timeline-content">
+                <h2>Started Kibsolis: My First Business Venture</h2>
+                <p>Launched Kibsolis, a platform for coding tutorials and free tools, marking my first step into the world of entrepreneurship and digital products.</p>
+            </div>
+        </article>
+
+    </section>
+
+<section id="testimonials">
+  <h2>Testimonials</h2>
+  <p class="testimonials-subtitle">// feedback.map(review => review.trust)</p>
+
+  <div class="testimonials-stats">
+    <div class="stat-item">
+      <div class="stat-value">5.0 <span class="star">★</span></div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">Job Success</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="stat-value">35+</div>
+      <div class="stat-label">Projects Delivered</div>
+    </div>
+  </div>
+
+  <!-- Row 1: scrolls left -->
+  <div class="testimonials-row-wrap">
+    <div class="testimonials-row row-left" id="rowLeft">
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge fiverr">Fiverr · Verified</span>
+        </div>
+        <p class="t-quote">Replace this with a real testimonial — a couple of sentences on the result you delivered and what it was like working with you.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#7c3aed;">MS</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge upwork">Upwork · Verified</span>
+        </div>
+        <p class="t-quote">Second placeholder quote. Keep it short, specific, and outcome-focused — mention the project and one personal detail.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#0ea5e9;">SI</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge fiverr">Fiverr · Verified</span>
+        </div>
+        <p class="t-quote">Third placeholder quote. Swap the initials, name, location, and service line with real client info once you have it.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#f97316;">BP</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★☆</span>
+          <span class="t-badge upwork">Upwork · Verified</span>
+        </div>
+        <p class="t-quote">Fourth placeholder quote. Add as many cards as you like — the script duplicates the whole row automatically for the loop.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#22c55e;">FS</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge fiverr">Fiverr · Verified</span>
+        </div>
+        <p class="t-quote">Fifth placeholder quote. Hovering over a row pauses its scroll so visitors can actually read the card they're on.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#ec4899;">RK</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: scrolls right (opposite direction) -->
+  <div class="testimonials-row-wrap">
+    <div class="testimonials-row row-right" id="rowRight">
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge upwork">Upwork · Verified</span>
+        </div>
+        <p class="t-quote">Sixth placeholder quote. This bottom row scrolls the opposite way from the top row for the crossing marquee effect.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#6366f1;">JD</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge fiverr">Fiverr · Verified</span>
+        </div>
+        <p class="t-quote">Seventh placeholder quote. Reorder or trim cards freely — the layout reflows on its own.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#14b8a6;">AM</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★☆☆</span>
+          <span class="t-badge upwork">Upwork · Verified</span>
+        </div>
+        <p class="t-quote">Eighth placeholder quote. Even a mixed star rating here still reads as authentic, so don't force every card to five stars.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#eab308;">TW</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge fiverr">Fiverr · Verified</span>
+        </div>
+        <p class="t-quote">Ninth placeholder quote. Keep quotes to two or three sentences so the card height stays consistent across the row.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#ef4444;">NC</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-card">
+        <div class="t-card-top">
+          <span class="t-stars">★★★★★</span>
+          <span class="t-badge upwork">Upwork · Verified</span>
+        </div>
+        <p class="t-quote">Tenth placeholder quote. Update the stat numbers above (rating, job success, projects delivered) whenever they change.</p>
+        <div class="t-footer">
+          <div class="t-avatar" style="background:#8b5cf6;">LP</div>
+          <div class="t-meta">
+            <h4>Client Name</h4>
+            <span>Country · Service Provided</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+   <section id="contact" class="contact-section">
+  <div class="contact-card">
+    <h2>Get In Touch</h2>
+    <p class="contact-subtitle">Have a project in mind, a job opportunity, or just want to say hi?</p>
+    
+    <div class="contact-info">
+      <div class="info-item">
+        <span class="info-icon">📧</span>
+        <a href="mailto:kibriyajehangir69@gmail.com">kibriyajehangir69@gmail.com</a>
+      </div>
+      <div class="info-item">
+        <span class="info-icon">📱</span>
+        <a href="tel:+923165288913">+92 3165288913</a>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://github.com/KibriyaJehangir" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://pk.linkedin.com/in/kibriya-jehangir-387413378" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://monkeytype.com/profile/Kibriya_Jehangir" target="_blank" rel="noopener noreferrer">MonkeyType</a>
+      <a href="https://leetcode.com/u/Kibriya_Jehangir/" target="_blank" rel="noopener noreferrer">LeetCode</a>
+      <a href="https://www.youtube.com/@Kibriya_Jehangir69" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  // Continues the loading screen's atmosphere into the page, then dissolves it.
+  (function(){
+    var overlay = document.getElementById('bootOverlay');
+    if(!overlay) return;
+
+    var cameFromLoader = sessionStorage.getItem('fromLoader');
+    sessionStorage.removeItem('fromLoader');
+
+    if(!cameFromLoader){
+      overlay.remove();
+      return;
+    }
+
+    var grid = document.createElement('div');
+    grid.className = 'boot-grid';
+    overlay.appendChild(grid);
+
+    var glyphs = ["{ }", "</>", "0101", "npm", "git", "const", "=>", "[ ]", "px", "===", "AI"];
+    for (var i = 0; i < 14; i++) {
+      var el = document.createElement('div');
+      el.className = 'boot-particle';
+      el.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+      el.style.left = (Math.random() * 100) + 'vw';
+      el.style.fontSize = (0.85 + Math.random() * 0.9) + 'rem';
+      var duration = 9 + Math.random() * 10;
+      el.style.animationDuration = duration + 's';
+      el.style.animationDelay = -(Math.random() * duration) + 's';
+      overlay.appendChild(el);
+    }
+
+    function dissolve(){
+      overlay.classList.add('boot-hide');
+      setTimeout(function(){ overlay.remove(); }, 750);
+    }
+
+    if (document.readyState === 'complete') {
+      setTimeout(dissolve, 250);
+    } else {
+      window.addEventListener('load', function(){ setTimeout(dissolve, 250); });
+    }
+  })();
+</script>
+<script src="script.js" ></script>
+
+<script src="about_animation.js"></script>
+   
+
+    <!-- Footer -->
+    <footer style="background: url(https://cdn.pixabay.com/animation/2024/12/06/20/25/20-25-19-625_512.gif); color: white;">
+        <p >2026 Kibriya. All rights reserved.</p>
+    </footer>
+
+   
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script> <script src="https://files.bpcontent.cloud/2026/05/16/22/20260516220244-JJ400636.js" defer></script>
+</body>
+</html>
+
