@@ -2965,3 +2965,8 @@ body.dark-mode .stat-item .stat-value,
 body.dark-mode .stat-item .stat-label {
   color: #ffffff !important;
 }
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .glow-circle {
+    display: none !important;
+  }
+}
